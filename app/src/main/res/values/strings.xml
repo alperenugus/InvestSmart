@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">InvestSmart</string>
 
+    <!--home_screen-->
     <string name="username">UserName</string>
     <string name="ranking">Ranking:#</string>
     <string name="assets">Assets</string>
     <string name="fav_companies">Favorite Companies</string>
     <string name="settings">Settings</string>
 
+    <!--settings_screen-->
     <string name="account_settings">Account Settings</string>
     <string name="settings_middle_text">You can change your password, and e-mail or reset your account.</string>
     <string name="change_password">Change Password</string>
@@ -15,12 +17,24 @@
     <string name="about_us">About Us</string>
     <string name="policy">Terms of Service and Privacy Policy</string>
 
+    <!--assets_screen-->
     <string name="total_money">Total Money</string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets">Current Assets</string>
     <string name="invest">Invest</string>
     <string name="sell">Sell</string>
     <string name="assets_bottom_text">Use your money in a smart way!</string>
+
+    <!--reset_password_screen-->
+    <string name="enter_old_password">Enter your old password:</string>
+    <string name="old_password">Old Password</string>
+    <string name="enter_new_password">Enter your new password:</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset_password_bottom_text">Having Problems? Click for Support.</string>
+
+
 
 
 
