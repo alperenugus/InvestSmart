@@ -1,15 +1,6 @@
 <resources>
     <string name="app_name">InvestSmart</string>
 
-    <string name="total_money">Total Money</string>
-    <string name="current_assets">Current Assets</string>
-    <string name="invest">Invest</string>
-    <string name="sell">Sell</string>
-    <string name="slogan">Use your money in a smart way!</string>
-    <string name="advise">You can invest in companies or sell your shares.</string>
-
-
-
     <string name="username">UserName</string>
     <string name="ranking">Ranking:#</string>
     <string name="assets">Assets</string>
@@ -23,6 +14,15 @@
     <string name="reset_account">Reset Account</string>
     <string name="about_us">About Us</string>
     <string name="policy">Terms of Service and Privacy Policy</string>
+
+    <string name="total_money">Total Money</string>
+    <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
+    <string name="current_assets">Current Assets</string>
+    <string name="invest">Invest</string>
+    <string name="sell">Sell</string>
+    <string name="assets_bottom_text">Use your money in a smart way!</string>
+
+
 
 
     <string name="Test">Test</string>
