@@ -61,4 +61,7 @@
     <string name="predict_good">We recommend purchasing more stock</string>
     <string name="predict_bad">We do not recommend purchasing more stock</string>
     <string name="predict_info">Click here to see how the algorithm works!</string>
+
+    <!--current_assets-->
+    <string name="owned_shares">Owned Shares:</string>
 </resources>
