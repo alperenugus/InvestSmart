@@ -34,12 +34,20 @@
     <string name="reset_password">Reset Password</string>
     <string name="reset_password_bottom_text">Having Problems? Click for Support.</string>
 
+    <!--reset_email_screen and reset_account screen-->
     <string name="enter_new_email">Enter new e-mail</string>
     <string name="new_email">New e-mail</string>
     <string name="enter_password">Enter your password</string>
     <string name="password_hint_text">Password</string>
     <string name="reset_email">Reset e-mail</string>
     <string name="confirm_reset_account">Are you sure you want to reset your account?</string>
+
+    <string name="alperen_ugus">Alperen Ugus</string>
+    <string name="about_alperen_ugus">Alperen is an awesome junior in Computer Science who is super cool.</string>
+    <string name="mackenzie_hull">Mackenzie Hull</string>
+    <string name="about_mackenzie_hull">Kenzie is a junior in Computer Science</string>
+    <string name="seth_rose">Seth Rose</string>
+    <string name="about_seth_rose">Seth is a super cool kid in Computer Science.</string>
 
     <string name="Test">Test</string>
 </resources>
