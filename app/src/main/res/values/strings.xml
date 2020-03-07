@@ -50,4 +50,15 @@
     <string name="about_seth_rose">Seth is a super cool kid in Computer Science.</string>
 
     <string name="Test">Test</string>
+
+    <!--buy/sell icons-->
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+
+    <!--prediction-->
+    <string name="predict">Prediction</string>
+    <string name="time_predict">These are graphs showing yearly and weekly changes of the companies stock value.</string>
+    <string name="predict_good">We recommend purchasing more stock</string>
+    <string name="predict_bad">We do not recommend purchasing more stock</string>
+    <string name="predict_info">Click here to see how the algorithm works!</string>
 </resources>
