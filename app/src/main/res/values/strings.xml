@@ -35,10 +35,11 @@
     <string name="reset_password_bottom_text">Having Problems? Click for Support.</string>
 
     <string name="enter_new_email">Enter new e-mail</string>
+    <string name="new_email">New e-mail</string>
     <string name="enter_password">Enter your password</string>
+    <string name="password_hint_text">Password</string>
     <string name="reset_email">Reset e-mail</string>
     <string name="confirm_reset_account">Are you sure you want to reset your account?</string>
 
-    
     <string name="Test">Test</string>
 </resources>
