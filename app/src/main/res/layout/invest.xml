@@ -52,5 +52,13 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="There will be a list of companies in a viewPager here!">
+
+    </TextView>
+
 
 </LinearLayout>
