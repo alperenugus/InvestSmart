@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import theinvestors.csci448.investsmart.R
 
@@ -13,9 +14,23 @@ private const val logTag: String = "HomeScreenFragment"
 
 class HomeScreenFragment: Fragment() {
 
+    private lateinit var assetsBtn: Button
+    private lateinit var favCompaniesBtn: Button
+    private lateinit var settingsButton: Button
+
+    interface CallBacks{
+        fun homeScreenAssetsClicked()
+        fun homeScreenFavCompaniesClicked()
+        fun homeScreenSettingsClicked()
+    }
+
+    private var callBacks: CallBacks? = null
+
+
     override fun onAttach(context: Context?) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
+        callBacks = context as CallBacks
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +46,23 @@ class HomeScreenFragment: Fragment() {
         Log.d(logTag, "onCreateView() called")
 
         val view: View = inflater.inflate(R.layout.home_screen, container, false)
+
+        assetsBtn = view.findViewById(R.id.home_screen_assets_button)
+        favCompaniesBtn = view.findViewById(R.id.home_screen_fav_companies_button)
+        settingsButton = view.findViewById(R.id.home_screen_settings_button)
+
+        assetsBtn.setOnClickListener {
+            callBacks?.homeScreenAssetsClicked()
+        }
+
+        favCompaniesBtn.setOnClickListener {
+            callBacks?.homeScreenFavCompaniesClicked()
+        }
+
+        settingsButton.setOnClickListener {
+            callBacks?.homeScreenSettingsClicked()
+        }
+
         return view
     }
 
@@ -72,5 +104,6 @@ class HomeScreenFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
+        callBacks = null
     }
 }
