@@ -12,39 +12,21 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.api.UserApi
-import theinvestors.csci448.investsmart.api.UserFetchr
-import theinvestors.csci448.investsmart.data.UserModel
 
-private const val logTag: String = "LoginFragment"
+private const val logTag: String = "SignUpFragment"
 
-class LoginFragment: Fragment() {
+class SignUpFragment: Fragment() {
 
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
-    private lateinit var loginBtn: Button
+    private lateinit var emailTextView: EditText
+    private lateinit var passwordTextView: EditText
+    private lateinit var passwordAgainTextView: EditText
     private lateinit var signUpBtn: Button
-
-    private lateinit var welcomeText: TextView
 
     private lateinit var email: String
     private lateinit var password: String
-
-    private val userFetchr = UserFetchr()
-
-    private lateinit var userRequest: LiveData<String>
-
-
+    private lateinit var passwordAgain: String
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
@@ -62,21 +44,16 @@ class LoginFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d(logTag, "onCreateView() called")
+        val view: View = inflater.inflate(R.layout.sign_up, container, false)
 
-        val view: View = inflater.inflate(R.layout.login , container, false)
+        emailTextView = view.findViewById(R.id.sign_up_email_edit_text)
+        passwordTextView = view.findViewById(R.id.sign_up_password_edit_text)
+        passwordAgainTextView = view.findViewById(R.id.sign_up_password_again_edit_text)
+        signUpBtn = view.findViewById(R.id.sign_up_signup_button)
 
-        emailEditText = view.findViewById(R.id.login_email_edit_text)
-        passwordEditText = view.findViewById(R.id.login_password_edit_text)
-        loginBtn = view.findViewById(R.id.login_signin_button)
-        signUpBtn = view.findViewById(R.id.login_signup_button)
-        welcomeText = view.findViewById(R.id.login_welcome_text)
-
-        userRequest = userFetchr.getUser()
-
-        emailEditText.addTextChangedListener(object: TextWatcher{
-
+        emailTextView.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                email = emailEditText.text.toString()
+                email = emailTextView.text.toString()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -84,11 +61,12 @@ class LoginFragment: Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
+
         })
 
-        passwordEditText.addTextChangedListener(object: TextWatcher{
+        passwordTextView.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                password = passwordEditText.text.toString()
+                password = passwordTextView.text.toString()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -96,39 +74,34 @@ class LoginFragment: Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             }
+
         })
 
-        loginBtn.setOnClickListener {
-            val action =
-                LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
-            findNavController().navigate(action)
-        }
+        passwordAgainTextView.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                password = passwordAgainTextView.text.toString()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+        })
 
         signUpBtn.setOnClickListener {
+            // Implement new user database call
+
+
             val action =
-                LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+                SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
             findNavController().navigate(action)
         }
 
 
 
         return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        Log.d(logTag, "onViewCreated() called")
-        super.onViewCreated(view, savedInstanceState)
-
-        userRequest.observe(
-            viewLifecycleOwner,
-            Observer{userRequest ->
-                userRequest.let {
-                    Log.i(logTag, "Got crimes ${userRequest.toString()}")
-                    welcomeText.text = userRequest.toString()
-                }
-            }
-        )
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -170,4 +143,5 @@ class LoginFragment: Fragment() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
     }
+
 }

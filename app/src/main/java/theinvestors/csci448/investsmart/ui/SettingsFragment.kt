@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
 
 private const val logTag: String = "SettingsFragment"
@@ -19,21 +20,9 @@ class SettingsFragment: Fragment() {
     private lateinit var resetAccountBtn: Button
     private lateinit var aboutUsBtn: Button
 
-
-    interface CallBacks{
-        fun settingsChangePasswordClicked()
-        fun settingsChangeEmailClicked()
-        fun settingsResetAccountClicked()
-        fun settingsAboutUsClicked()
-    }
-
-    private var callBacks: CallBacks? = null
-
-
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
-        callBacks = context as CallBacks
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,19 +45,27 @@ class SettingsFragment: Fragment() {
         aboutUsBtn = view.findViewById(R.id.settings_about_us_button)
 
         changePasswordBtn.setOnClickListener {
-            callBacks?.settingsChangePasswordClicked()
+            val action =
+                SettingsFragmentDirections.actionSettingsFragmentToResetPasswordFragment()
+            findNavController().navigate(action)
         }
 
         changeEmailBtn.setOnClickListener {
-            callBacks?.settingsChangeEmailClicked()
+            val action =
+                SettingsFragmentDirections.actionSettingsFragmentToResetEmailFragment()
+            findNavController().navigate(action)
         }
 
         resetAccountBtn.setOnClickListener {
-            callBacks?.settingsResetAccountClicked()
+            val action =
+                SettingsFragmentDirections.actionSettingsFragmentToResetAccountFragment()
+            findNavController().navigate(action)
         }
 
         aboutUsBtn.setOnClickListener {
-            callBacks?.settingsAboutUsClicked()
+            val action =
+                SettingsFragmentDirections.actionSettingsFragmentToAboutUsFragment()
+            findNavController().navigate(action)
         }
 
         return view
@@ -112,6 +109,5 @@ class SettingsFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
-        callBacks = null
     }
 }

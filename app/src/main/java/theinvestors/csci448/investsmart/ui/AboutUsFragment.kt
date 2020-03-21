@@ -14,16 +14,9 @@ private const val logTag: String = "AboutUsFragment"
 
 class AboutUsFragment: Fragment() {
 
-    interface CallBacks{
-
-    }
-
-    private var callBacks: CallBacks? = null
-
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
-        callBacks = context as CallBacks
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +73,6 @@ class AboutUsFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
-        callBacks = null
     }
 
 

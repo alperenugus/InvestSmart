@@ -12,8 +12,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/login_welcome_text"
-            android:text="@string/welcome"
+            android:id="@+id/sign_up_top_text"
+            android:text="@string/sign_up"
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="30dp"
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_email_text"
+                android:id="@+id/sign_up_email_text"
                 android:text="@string/email"
                 android:gravity="left"
                 android:textColor="#FFFFFF"
@@ -45,7 +45,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_email_edit_text"
+                android:id="@+id/sign_up_email_edit_text"
                 android:gravity="left"
                 android:layout_margin="10dp"
                 android:hint="@string/email">
@@ -60,7 +60,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_password_text"
+                android:id="@+id/sign_up_password_text"
                 android:text="@string/password"
                 android:gravity="left"
                 android:textColor="#FFFFFF"
@@ -70,7 +70,26 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_password_edit_text"
+                android:id="@+id/sign_up_password_edit_text"
+                android:gravity="left"
+                android:layout_margin="10dp"
+                android:hint="@string/password">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_password_again_text"
+                android:text="@string/password_again"
+                android:gravity="left"
+                android:textColor="#FFFFFF"
+                android:layout_margin="10dp">
+            </TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_password_again_edit_text"
                 android:gravity="left"
                 android:layout_margin="10dp"
                 android:hint="@string/password">
@@ -87,33 +106,12 @@
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/login_signin_button"
-                android:text="@string/sign_in"
-                android:background="@drawable/button"
-                android:textColor="#FFFFFF"
-                android:layout_margin="8dp">
-            </Button>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_new_account_text"
-                android:text="@string/new_account"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:layout_margin="10dp">
-            </TextView>
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_signup_button"
+                android:id="@+id/sign_up_signup_button"
                 android:text="@string/sign_up"
                 android:background="@drawable/button"
                 android:textColor="#FFFFFF"
                 android:layout_margin="8dp">
             </Button>
-
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

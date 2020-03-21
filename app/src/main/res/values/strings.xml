@@ -1,6 +1,19 @@
 <resources>
     <string name="app_name">InvestSmart</string>
 
+    <!--login_screen-->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="welcome">Welcome!</string>
+
+    <!--signup_screen-->
+
+    <string name="sign_up">Sign Up!</string>
+    <string name="password_again">Re-enter your password</string>
+    <string name="new_account">Don\'t have an account?</string>
+
+
     <!--home_screen-->
     <string name="username">UserName</string>
     <string name="ranking">Ranking:#</string>
@@ -21,8 +34,7 @@
     <string name="total_money">Total Money</string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets">Current Assets</string>
-    <string name="invest">Invest</string>
-    <string name="sell">Sell</string>
+    <string name="invest_sell">Invest/Sell</string>
     <string name="assets_bottom_text">Use your money in a smart way!</string>
 
     <!--reset_password_screen-->

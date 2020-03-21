@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
 
 private const val logTag: String = "HomeScreenFragment"
@@ -18,19 +19,9 @@ class HomeScreenFragment: Fragment() {
     private lateinit var favCompaniesBtn: Button
     private lateinit var settingsButton: Button
 
-    interface CallBacks{
-        fun homeScreenAssetsClicked()
-        fun homeScreenFavCompaniesClicked()
-        fun homeScreenSettingsClicked()
-    }
-
-    private var callBacks: CallBacks? = null
-
-
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
-        callBacks = context as CallBacks
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,15 +43,21 @@ class HomeScreenFragment: Fragment() {
         settingsButton = view.findViewById(R.id.home_screen_settings_button)
 
         assetsBtn.setOnClickListener {
-            callBacks?.homeScreenAssetsClicked()
+            val action =
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToAssetsFragment()
+            findNavController().navigate(action)
         }
 
         favCompaniesBtn.setOnClickListener {
-            callBacks?.homeScreenFavCompaniesClicked()
+            val action =
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToFavoriteCompaniesFragment()
+            findNavController().navigate(action)
         }
 
         settingsButton.setOnClickListener {
-            callBacks?.homeScreenSettingsClicked()
+            val action =
+                HomeScreenFragmentDirections.actionHomeScreenFragmentToSettingsFragment()
+            findNavController().navigate(action)
         }
 
         return view
@@ -104,6 +101,5 @@ class HomeScreenFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
-        callBacks = null
     }
 }

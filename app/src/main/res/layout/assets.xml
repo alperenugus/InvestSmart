@@ -65,24 +65,12 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/assets_invest_button"
-            android:text="@string/invest"
+            android:text="@string/invest_sell"
             android:background="@drawable/button"
             android:textColor="#FFFFFF"
             android:layout_margin="8dp"
             >
         </Button>
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/assets_sell_button"
-            android:text="@string/sell"
-            android:background="@drawable/button"
-            android:textColor="#FFFFFF"
-            android:layout_margin="8dp"
-            >
-        </Button>
-
 
     </LinearLayout>
 

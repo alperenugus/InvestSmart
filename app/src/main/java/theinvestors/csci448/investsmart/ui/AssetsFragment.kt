@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
 
 private const val logTag: String = "AssetsFragment"
@@ -17,23 +18,10 @@ class AssetsFragment: Fragment() {
     private lateinit var currentAssetsBtn: Button
     private lateinit var favCompaniesBtn: Button
     private lateinit var investBtn: Button
-    private lateinit var sellBtn: Button
 
-    interface CallBacks{
-        fun assetsOnCurrentAssetsClicked()
-        fun assetsOnFavCompaniesClicked()
-        fun assetsOnInvestClicked()
-        fun assetsOnSellClicked()
-    }
-
-    private var callBacks: CallBacks? = null
-
-
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
-        callBacks = context as CallBacks
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,22 +41,23 @@ class AssetsFragment: Fragment() {
         currentAssetsBtn = view.findViewById(R.id.assets_current_assets_button)
         favCompaniesBtn = view.findViewById(R.id.assets_fav_companies_button)
         investBtn = view.findViewById(R.id.assets_invest_button)
-        sellBtn = view.findViewById(R.id.assets_sell_button)
 
         currentAssetsBtn.setOnClickListener {
-            callBacks?.assetsOnCurrentAssetsClicked()
+            val action =
+                AssetsFragmentDirections.actionAssetsFragmentToCurrentAssetsFragment()
+            findNavController().navigate(action)
         }
 
         favCompaniesBtn.setOnClickListener {
-            callBacks?.assetsOnFavCompaniesClicked()
+            val action =
+                AssetsFragmentDirections.actionAssetsFragmentToFavoriteCompaniesFragment()
+            findNavController().navigate(action)
         }
 
         investBtn.setOnClickListener {
-            callBacks?.assetsOnFavCompaniesClicked()
-        }
-
-        sellBtn.setOnClickListener {
-            callBacks?.assetsOnSellClicked()
+            val action =
+                AssetsFragmentDirections.actionAssetsFragmentToInvestFragment()
+            findNavController().navigate(action)
         }
 
         return view
@@ -112,6 +101,5 @@ class AssetsFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
-        callBacks = null
     }
 }
