@@ -11,9 +11,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
+import theinvestors.csci448.investsmart.api.UserService
 
 private const val logTag: String = "SignUpFragment"
 
@@ -25,8 +29,14 @@ class SignUpFragment: Fragment() {
     private lateinit var signUpBtn: Button
 
     private lateinit var email: String
-    private lateinit var password: String
-    private lateinit var passwordAgain: String
+    private var password: String = "nulla"
+    private var passwordAgain: String = "nullb"
+
+    private val userService = UserService()
+
+    private lateinit var signUpRequest: LiveData<Boolean>
+
+
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
@@ -79,7 +89,7 @@ class SignUpFragment: Fragment() {
 
         passwordAgainTextView.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
-                password = passwordAgainTextView.text.toString()
+                passwordAgain = passwordAgainTextView.text.toString()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -93,10 +103,25 @@ class SignUpFragment: Fragment() {
         signUpBtn.setOnClickListener {
             // Implement new user database call
 
+            if (password == passwordAgain){
 
-            val action =
-                SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
-            findNavController().navigate(action)
+                signUpRequest = userService.saveUser(email, password)
+
+                signUpRequest.observe(
+                    viewLifecycleOwner,
+                    Observer { signUpRequest ->
+                        signUpRequest.let {
+                            Log.i(logTag, "Saved ${signUpRequest.toString()}")
+                            val action =
+                                SignUpFragmentDirections.actionSignUpFragmentToLoginFragment()
+                            findNavController().navigate(action)
+                        }
+                    }
+                )
+
+            }else {
+                Toast.makeText(context, "Passwords should match!", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
