@@ -17,7 +17,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.api.UserService
+import theinvestors.csci448.investsmart.service.UserService
 
 private const val logTag: String = "LoginFragment"
 
@@ -33,7 +33,8 @@ class LoginFragment: Fragment() {
     private var email: String = "null"
     private var password: String = "null"
 
-    private val userService = UserService()
+    private val userService =
+        UserService()
 
     private lateinit var loginRequest: LiveData<Boolean>
 
