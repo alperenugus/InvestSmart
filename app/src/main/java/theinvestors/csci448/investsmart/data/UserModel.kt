@@ -5,5 +5,5 @@ import java.util.*
 data class UserModel(
     var email: String,
     var password: String,
-    var totalMoney: Double
+    var totalmoney: Double
 )
