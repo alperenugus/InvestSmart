@@ -17,7 +17,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.AssetModel
+import theinvestors.csci448.investsmart.data.FavCompModel
 import theinvestors.csci448.investsmart.service.AssetService
+import theinvestors.csci448.investsmart.service.FavCompService
 import theinvestors.csci448.investsmart.service.UserService
 
 private const val logTag: String = "SignUpFragment"
@@ -37,6 +39,14 @@ class SignUpFragment: Fragment() {
         UserService()
 
     private lateinit var signUpRequest: LiveData<Boolean>
+
+
+    // TEST PURPOSES
+//    private val assetService = AssetService()
+//    private lateinit var assetRequest: LiveData<List<AssetModel>>
+//
+//    private val favCompService = FavCompService()
+//    private lateinit var favCompRequest: LiveData<List<FavCompModel>>
 
 
     override fun onAttach(context: Context) {
@@ -124,6 +134,30 @@ class SignUpFragment: Fragment() {
                 Toast.makeText(context, "Passwords should match!", Toast.LENGTH_SHORT).show()
             }
         }
+
+        // TESTING THE SERVICES
+//        assetRequest = assetService.getAssets("alpi@gmail.com")
+//
+//        assetRequest.observe(
+//            viewLifecycleOwner,
+//            Observer { assetRequest ->
+//                assetRequest.let {
+//                    Log.d(logTag, assetRequest.toString())
+//                }
+//            }
+//        )
+//
+//        favCompRequest = favCompService.getFavComp("alpi")
+//
+//        favCompRequest.observe(
+//            viewLifecycleOwner,
+//            Observer { favCompRequest ->
+//                favCompRequest.let {
+//                    Log.d(logTag, favCompRequest.toString())
+//                }
+//            }
+//        )
+
 
         return view
     }

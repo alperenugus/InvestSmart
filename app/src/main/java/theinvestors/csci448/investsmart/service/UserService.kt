@@ -13,7 +13,7 @@ import theinvestors.csci448.investsmart.api.UserApi
 import theinvestors.csci448.investsmart.data.UserModel
 import java.util.*
 
-private const val logTag: String = "UserServer"
+private const val logTag: String = "UserService"
 
 class UserService {
 

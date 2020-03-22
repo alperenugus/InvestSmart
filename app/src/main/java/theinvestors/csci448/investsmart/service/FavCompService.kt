@@ -7,15 +7,15 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import theinvestors.csci448.investsmart.api.AssetApi
+import theinvestors.csci448.investsmart.api.FavCompApi
 import theinvestors.csci448.investsmart.data.AssetModel
-import kotlin.math.log
+import theinvestors.csci448.investsmart.data.FavCompModel
 
-private const val logTag: String = "AssetService"
+private const val logTag: String = "FavCompService"
 
-class AssetService {
+class FavCompService {
 
-    private var assetApi: AssetApi
+    private var favCompApi: FavCompApi
 
     init {
         val retrofit: Retrofit = Retrofit.Builder()
@@ -23,25 +23,24 @@ class AssetService {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        assetApi = retrofit.create(AssetApi::class.java)
+        favCompApi = retrofit.create(FavCompApi::class.java)
     }
 
+    fun getFavComp(email: String): MutableLiveData<List<FavCompModel>> {
+        val responseLiveData: MutableLiveData<List<FavCompModel>> = MutableLiveData()
 
-    fun getAssets(email: String): MutableLiveData<List<AssetModel>> {
-        val responseLiveData: MutableLiveData<List<AssetModel>> = MutableLiveData()
 
+        val assetRequest: Call<List<FavCompModel>> = favCompApi.getFavComp(email)
 
-        val assetRequest: Call<List<AssetModel>> = assetApi.getAssets(email)
-
-        assetRequest.enqueue(object : Callback<List<AssetModel>> {
-            override fun onFailure(call: Call<List<AssetModel>>, t: Throwable) {
+        assetRequest.enqueue(object : Callback<List<FavCompModel>> {
+            override fun onFailure(call: Call<List<FavCompModel>>, t: Throwable) {
                 Log.d(logTag, "There was a problem.")
                 Log.d(logTag, t.toString())
             }
 
             override fun onResponse(
-                call: Call<List<AssetModel>>,
-                response: Response<List<AssetModel>>
+                call: Call<List<FavCompModel>>,
+                response: Response<List<FavCompModel>>
             ) {
                 responseLiveData.value = response.body()
                 Log.d(logTag, "Got the response ${response.body().toString()}")
@@ -49,12 +48,6 @@ class AssetService {
         })
 
         return responseLiveData
-    }
-
-
-    // TO DO: Think about if a user has shares from a company and wants to add more.
-    fun saveAsset(){
-
     }
 
 }
