@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteCompaniesFragment"
-        android:name="theinvestors.csci448.investsmart.ui.FavoriteCompaniesFragment"
+        android:name="theinvestors.csci448.investsmart.ui.FavoriteCompanies.FavoriteCompaniesFragment"
         android:label="Favorite Companies" />
     <fragment
         android:id="@+id/settingsFragment"
@@ -52,9 +52,6 @@
         <action
             android:id="@+id/action_settingsFragment_to_resetAccountFragment"
             app:destination="@id/resetAccountFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_resetEmailFragment"
-            app:destination="@id/resetEmailFragment" />
         <action
             android:id="@+id/action_settingsFragment_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
@@ -67,10 +64,6 @@
         android:name="theinvestors.csci448.investsmart.ui.ResetAccountFragment"
         android:label="Reset Account" />
     <fragment
-        android:id="@+id/resetEmailFragment"
-        android:name="theinvestors.csci448.investsmart.ui.ResetEmailFragment"
-        android:label="Reset Email" />
-    <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="theinvestors.csci448.investsmart.ui.ResetPasswordFragment"
         android:label="Reset Password" />
@@ -80,7 +73,7 @@
         android:label="About Us" />
     <fragment
         android:id="@+id/currentAssetsFragment"
-        android:name="theinvestors.csci448.investsmart.ui.CurrentAssetsFragment"
+        android:name="theinvestors.csci448.investsmart.ui.CurrentAssets.CurrentAssetsFragment"
         android:label="Current Assets" />
     <fragment
         android:id="@+id/investFragment"

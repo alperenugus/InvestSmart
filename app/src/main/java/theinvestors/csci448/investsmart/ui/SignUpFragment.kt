@@ -41,12 +41,12 @@ class SignUpFragment: Fragment() {
     private lateinit var signUpRequest: LiveData<Boolean>
 
 
-    // TEST PURPOSES
-    private val assetService = AssetService()
-    private lateinit var assetRequest: LiveData<List<AssetModel>>
-
-    private val favCompService = FavCompService()
-    private lateinit var favCompRequest: LiveData<List<FavCompModel>>
+//    // TEST PURPOSES
+//    private val assetService = AssetService()
+//    private lateinit var assetRequest: LiveData<List<AssetModel>>
+//
+//    private val favCompService = FavCompService()
+//    private lateinit var favCompRequest: LiveData<List<FavCompModel>>
 
 
     override fun onAttach(context: Context) {
@@ -136,27 +136,27 @@ class SignUpFragment: Fragment() {
         }
 
         // TESTING THE SERVICES
-        assetRequest = assetService.getAssets("Kuleli")
-
-        assetRequest.observe(
-            viewLifecycleOwner,
-            Observer { assetRequest ->
-                assetRequest.let {
-                    Log.d(logTag, assetRequest.toString())
-                }
-            }
-        )
-
-        favCompRequest = favCompService.getFavComp("alpi")
-
-        favCompRequest.observe(
-            viewLifecycleOwner,
-            Observer { favCompRequest ->
-                favCompRequest.let {
-                    Log.d(logTag, favCompRequest.toString())
-                }
-            }
-        )
+//        assetRequest = assetService.getAssets("alperenugus@gmail.com")
+//
+//        assetRequest.observe(
+//            viewLifecycleOwner,
+//            Observer { assetRequest ->
+//                assetRequest.let {
+//                    Log.d(logTag, assetRequest.toString())
+//                }
+//            }
+//        )
+//
+//        favCompRequest = favCompService.getFavComp("alperenugus@gmail.com")
+//
+//        favCompRequest.observe(
+//            viewLifecycleOwner,
+//            Observer { favCompRequest ->
+//                favCompRequest.let {
+//                    Log.d(logTag, favCompRequest.toString())
+//                }
+//            }
+//        )
 
 
         return view

@@ -16,7 +16,6 @@ private const val logTag: String = "SettingsFragment"
 class SettingsFragment: Fragment() {
 
     private lateinit var changePasswordBtn: Button
-    private lateinit var changeEmailBtn: Button
     private lateinit var resetAccountBtn: Button
     private lateinit var aboutUsBtn: Button
 
@@ -40,19 +39,12 @@ class SettingsFragment: Fragment() {
         val view: View = inflater.inflate(R.layout.settings, container, false)
 
         changePasswordBtn = view.findViewById(R.id.settings_change_password_button)
-        changeEmailBtn = view.findViewById(R.id.settings_change_email_button)
         resetAccountBtn = view.findViewById(R.id.settings_reset_account_button)
         aboutUsBtn = view.findViewById(R.id.settings_about_us_button)
 
         changePasswordBtn.setOnClickListener {
             val action =
                 SettingsFragmentDirections.actionSettingsFragmentToResetPasswordFragment()
-            findNavController().navigate(action)
-        }
-
-        changeEmailBtn.setOnClickListener {
-            val action =
-                SettingsFragmentDirections.actionSettingsFragmentToResetEmailFragment()
             findNavController().navigate(action)
         }
 

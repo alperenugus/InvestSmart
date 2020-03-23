@@ -26,7 +26,7 @@ class FavCompService {
         favCompApi = retrofit.create(FavCompApi::class.java)
     }
 
-    fun getFavComp(email: String): MutableLiveData<List<FavCompModel>> {
+    fun getFavComps(email: String): MutableLiveData<List<FavCompModel>> {
         val responseLiveData: MutableLiveData<List<FavCompModel>> = MutableLiveData()
 
 
