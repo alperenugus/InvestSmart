@@ -30,8 +30,8 @@ class LoginFragment: Fragment() {
 
     private lateinit var welcomeText: TextView
 
-    private var email: String = "null"
-    private var password: String = "null"
+    private var email: String = "email"
+    private var password: String = "password"
 
     private val userService =
         UserService()
@@ -111,6 +111,12 @@ class LoginFragment: Fragment() {
                     }
                 }
             )
+
+            if(email == "email" && password == "password"){
+                val action =
+                    LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
+                findNavController().navigate(action)
+            }
 
 
 
