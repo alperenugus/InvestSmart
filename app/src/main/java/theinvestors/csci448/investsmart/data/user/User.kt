@@ -7,6 +7,7 @@ import java.util.*
 @Entity
 data class User(
     @PrimaryKey val id: UUID = UUID.randomUUID(),
+    var email:String,
     var password: String,
     var totalmoney: Double
 )
