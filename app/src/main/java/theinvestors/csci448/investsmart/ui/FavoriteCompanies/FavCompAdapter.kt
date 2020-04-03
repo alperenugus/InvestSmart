@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.data.FavCompModel
+import theinvestors.csci448.investsmart.data.favcomp.FavComp
 
-class FavCompAdapter(private val favComps: List<FavCompModel>, private val clickListener: (FavCompModel) -> Unit): PagedListAdapter<FavCompModel, FavCompHolder>(FavCompAdapter.DIFF_CALLBACK){
+class FavCompAdapter(private val favComps: List<FavComp>, private val clickListener: (FavComp) -> Unit): PagedListAdapter<FavComp, FavCompHolder>(FavCompAdapter.DIFF_CALLBACK){
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FavCompModel>() {
-            override fun areItemsTheSame(oldItem: FavCompModel, newItem: FavCompModel) =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FavComp>() {
+            override fun areItemsTheSame(oldItem: FavComp, newItem: FavComp) =
                 oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: FavCompModel, newItem: FavCompModel) =
+            override fun areContentsTheSame(oldItem: FavComp, newItem: FavComp) =
                 oldItem == newItem
         }
     }

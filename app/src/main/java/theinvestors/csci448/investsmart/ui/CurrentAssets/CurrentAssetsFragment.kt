@@ -7,13 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.data.AssetModel
-import theinvestors.csci448.investsmart.service.AssetService
+import theinvestors.csci448.investsmart.data.asset.Asset
 
 private const val logTag: String = "CurrentAssetsFragment"
 
@@ -22,12 +19,9 @@ class CurrentAssetsFragment: Fragment() {
     private lateinit var assetsRecyclerView: RecyclerView
     private lateinit var adapter: AssetAdapter
 
-    private val assetService = AssetService()
-    private lateinit var assetRequest: LiveData<List<AssetModel>>
-
-    fun updateUI(assets : List<AssetModel>){
+    fun updateUI(assets : List<Asset>){
         adapter = AssetAdapter(assets){
-                asset: AssetModel -> Unit
+                asset: Asset -> Unit
         }
         assetsRecyclerView.adapter = adapter
     }
@@ -62,18 +56,7 @@ class CurrentAssetsFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(logTag, "onViewCreated() called")
-
-        assetRequest = assetService.getAssets("alperenugus@gmail.com")
-
-        assetRequest.observe(
-            viewLifecycleOwner,
-            Observer { assetRequest ->
-                assetRequest.let {
-                    Log.d(logTag, assetRequest.toString())
-                    updateUI(assetRequest)
-                }
-            }
-        )
+        // Load content from the database
 
     }
 

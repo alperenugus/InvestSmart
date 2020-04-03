@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.data.AssetModel
+import theinvestors.csci448.investsmart.data.asset.Asset
 
-class AssetAdapter(private val assets: List<AssetModel>, private val clickListener: (AssetModel) -> Unit): PagedListAdapter<AssetModel, AssetHolder>(DIFF_CALLBACK) {
+class AssetAdapter(private val assets: List<Asset>, private val clickListener: (Asset) -> Unit): PagedListAdapter<Asset, AssetHolder>(DIFF_CALLBACK) {
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AssetModel>() {
-            override fun areItemsTheSame(oldItem: AssetModel, newItem: AssetModel) =
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Asset>() {
+            override fun areItemsTheSame(oldItem: Asset, newItem: Asset) =
                 oldItem.id == newItem.id
-            override fun areContentsTheSame(oldItem: AssetModel, newItem: AssetModel) =
+            override fun areContentsTheSame(oldItem: Asset, newItem: Asset) =
                 oldItem == newItem
         }
     }

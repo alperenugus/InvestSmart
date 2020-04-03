@@ -11,13 +11,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.service.UserService
 
 private const val logTag: String = "LoginFragment"
 
@@ -32,14 +28,8 @@ class LoginFragment: Fragment() {
 
     private var email: String = "email"
     private var password: String = "password"
-
-    private val userService =
-        UserService()
-
-    private lateinit var loginRequest: LiveData<Boolean>
-
-
-
+    
+    
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
@@ -91,26 +81,8 @@ class LoginFragment: Fragment() {
         })
 
         loginBtn.setOnClickListener {
-
-            loginRequest = userService.getUser(email, password)
-
-            loginRequest.observe(
-                viewLifecycleOwner,
-                Observer{loginRequest ->
-                    loginRequest.let {
-                        Log.i(logTag, "Got text ${loginRequest.toString()}")
-                        if(loginRequest){
-                            val action =
-                                LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
-                            findNavController().navigate(action)
-                        }
-
-                        else{
-                            Toast.makeText(context, "Username or password is wrong", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            )
+            
+            // Implement Database Login
 
             if(email == "email" && password == "password"){
                 val action =

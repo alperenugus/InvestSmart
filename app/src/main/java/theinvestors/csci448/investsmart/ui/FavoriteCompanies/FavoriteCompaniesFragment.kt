@@ -7,13 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.R
-import theinvestors.csci448.investsmart.data.FavCompModel
-import theinvestors.csci448.investsmart.service.FavCompService
+import theinvestors.csci448.investsmart.data.favcomp.FavComp
 
 private const val logTag: String = "FavoriteCompFragment"
 
@@ -22,12 +19,9 @@ class FavoriteCompaniesFragment: Fragment() {
     private lateinit var favCompsRecyclerView: RecyclerView
     private lateinit var adapter: FavCompAdapter
 
-    private val favCompService = FavCompService()
-    private lateinit var favCompRequest: LiveData<List<FavCompModel>>
-
-    fun updateUI(favComps : List<FavCompModel>){
+    fun updateUI(favComps : List<FavComp>){
         adapter = FavCompAdapter(favComps){
-                favComp: FavCompModel -> Unit
+                favComp: FavComp -> Unit
         }
         favCompsRecyclerView.adapter = adapter
     }
@@ -62,19 +56,7 @@ class FavoriteCompaniesFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(logTag, "onViewCreated() called")
-
-        favCompRequest = favCompService.getFavComps("alperenugus@gmail.com")
-
-        favCompRequest.observe(
-            viewLifecycleOwner,
-            Observer { favCompRequest ->
-                favCompRequest.let {
-                    Log.d(logTag, favCompRequest.toString())
-                    updateUI(favCompRequest)
-                }
-            }
-        )
-
+        // Load content from the database
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
