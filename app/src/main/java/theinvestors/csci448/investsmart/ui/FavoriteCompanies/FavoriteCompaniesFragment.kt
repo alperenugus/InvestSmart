@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.R
@@ -16,8 +19,19 @@ private const val logTag: String = "FavoriteCompFragment"
 
 class FavoriteCompaniesFragment: Fragment() {
 
+    private var email = "alperenugus@gmail.com"
+    private var password = "123"
+
     private lateinit var favCompsRecyclerView: RecyclerView
     private lateinit var adapter: FavCompAdapter
+    private lateinit var factory: FavCompViewModelFactory
+    private lateinit var favComps: LiveData<FavComp?>
+
+
+    private val favCompViewModel: FavCompViewModel by lazy {
+        ViewModelProvider(this@FavoriteCompaniesFragment, factory)
+            .get(FavCompViewModel::class.java)
+    }
 
     fun updateUI(favComps : List<FavComp>){
         adapter = FavCompAdapter(favComps){
@@ -34,6 +48,8 @@ class FavoriteCompaniesFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
+        factory = FavCompViewModelFactory(requireContext())
+
     }
 
     override fun onCreateView(
@@ -57,6 +73,18 @@ class FavoriteCompaniesFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.d(logTag, "onViewCreated() called")
         // Load content from the database
+
+        favComps = favCompViewModel.getFavComps(email)
+
+        favComps.observe(
+            viewLifecycleOwner,
+            Observer { favComps ->
+                favComps.let {
+                    Log.d(logTag, "Got favComps ${favComps.toString()}")
+                }
+            }
+        )
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
