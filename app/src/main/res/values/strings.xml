@@ -75,4 +75,25 @@
     <!--current_assets-->
     <string name="owned_shares">Owned Shares:</string>
     <string name="company_name">Company Name:</string>
+
+    <!--Navigation-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Invest Smart</string>
+    <string name="nav_header_subtitle">investsmartmines@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--Navigation Menu-->
+    <string name="menu_login">Login</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_assets">Assets</string>
+    <string name="menu_current_assets">Current Assets</string>
+    <string name="menu_favcomps">Favorite Companies</string>
+    <string name="menu_invest">Invest</string>
+    <string name="menu_prediction">Prediction</string>
+    <string name="menu_reset_account">Reset Account</string>
+    <string name="menu_reset_password">Reset Password</string>
+
+    <string name="home_second">Home Second</string>
 </resources>

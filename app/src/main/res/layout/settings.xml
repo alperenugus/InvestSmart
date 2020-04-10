@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#668099">
+    android:background="@color/colorBackground">
 
 
     <LinearLayout
@@ -38,7 +38,7 @@
         android:gravity="center">
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/settings_change_password_button"
             android:layout_margin="8dp"
@@ -48,7 +48,7 @@
         </Button>
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/settings_reset_account_button"
             android:layout_margin="8dp"
@@ -58,7 +58,7 @@
         </Button>
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/settings_about_us_button"
             android:layout_margin="8dp"
