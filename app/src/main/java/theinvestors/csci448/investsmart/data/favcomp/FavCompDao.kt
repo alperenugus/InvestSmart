@@ -10,7 +10,7 @@ import androidx.room.Query
 interface FavCompDao {
 
     @Query("SELECT * FROM favcomp WHERE email = (:email)")
-    fun getFavComps(email: String): LiveData<FavComp?>
+    fun getFavComps(email: String): LiveData<List<FavComp>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addFavComp(favComp: FavComp)

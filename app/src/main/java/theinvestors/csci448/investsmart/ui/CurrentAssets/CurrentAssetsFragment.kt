@@ -12,20 +12,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.Asset
+import java.util.*
 
 private const val logTag: String = "CurrentAssetsFragment"
 
 class CurrentAssetsFragment: Fragment() {
 
-    private var email = "alperenugus@gmail.com"
-    private var password = "123"
-
     private lateinit var assetsRecyclerView: RecyclerView
     private lateinit var adapter: AssetAdapter
     private lateinit var factory: CurrentAssetsViewModelFactory
-    private lateinit var currentAssets: LiveData<Asset?>
 
     private val currentAssetsViewModel: CurrentAssetsViewModel by lazy {
         ViewModelProvider(this@CurrentAssetsFragment, factory)
@@ -72,18 +70,19 @@ class CurrentAssetsFragment: Fragment() {
         Log.d(logTag, "onViewCreated() called")
         // Load content from the database
 
-        currentAssets = currentAssetsViewModel.getAssets(email)
-
-
-        currentAssets.observe(
+        currentAssetsViewModel.currentAssets.observe(
             viewLifecycleOwner,
             Observer { assetList ->
-                assetList.let {
+                assetList?.let {
                     Log.d(logTag, "Got assetList ${assetList.toString()}")
+                    updateUI(assetList)
                 }
             }
         )
 
+        // Sample data
+//        var asset: Asset = Asset(UUID.randomUUID(), MainActivity.email, "SpaceX", 100)
+//        currentAssetsViewModel.addAsset(asset)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

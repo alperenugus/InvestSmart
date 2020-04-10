@@ -10,7 +10,7 @@ import androidx.room.Query
 interface AssetDao {
 
     @Query("SELECT * FROM asset WHERE email = (:email)")
-    fun getAssets(email: String): LiveData<Asset?>
+    fun getAssets(email: String): LiveData<List<Asset>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addAsset(asset: Asset)

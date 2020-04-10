@@ -1,8 +1,11 @@
 package theinvestors.csci448.investsmart.data.favcomp
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import java.util.concurrent.Executors
+
+private const val logTag: String = "FavCompRepository"
 
 class FavCompRepository(private val favCompDao: FavCompDao) {
 
@@ -26,7 +29,12 @@ class FavCompRepository(private val favCompDao: FavCompDao) {
         }
     }
 
-    fun getFavComps(email: String): LiveData<FavComp?> = favCompDao.getFavComps(email)
-    fun addFavComp(favComp: FavComp) = favCompDao.addFavComp(favComp)
+    fun getFavComps(email: String): LiveData<List<FavComp>> = favCompDao.getFavComps(email)
+    fun addFavComp(favComp: FavComp){
+        executor.execute {
+            favCompDao.addFavComp(favComp)
+            Log.d(logTag, "Added ${favComp.toString()}")
+        }
+    }
 
 }

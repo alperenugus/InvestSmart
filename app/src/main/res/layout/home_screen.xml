@@ -34,48 +34,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_screen_assets_button"
-            android:layout_margin="8dp"
-            android:text="@string/assets"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/button">
-        </Button>
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_screen_fav_companies_button"
-            android:layout_margin="8dp"
-            android:text="@string/fav_companies"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/button">
-        </Button>
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/home_screen_settings_button"
-            android:layout_margin="8dp"
-            android:text="@string/settings"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/button">
-        </Button>
-
-
-    </LinearLayout>
-
-
-
-
-
 
 </LinearLayout>

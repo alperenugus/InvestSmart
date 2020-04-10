@@ -1,8 +1,11 @@
 package theinvestors.csci448.investsmart.data.asset
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import java.util.concurrent.Executors
+
+private const val logTag: String = "AssetRepository"
 
 class AssetRepository(private val assetDao: AssetDao) {
 
@@ -26,7 +29,15 @@ class AssetRepository(private val assetDao: AssetDao) {
         }
     }
 
-    fun getAssets(email: String): LiveData<Asset?> = assetDao.getAssets(email)
-    fun addAsset(asset: Asset) = assetDao.addAsset(asset)
+    fun getAssets(email: String): LiveData<List<Asset>> {
+            return assetDao.getAssets(email)
+    }
+
+    fun addAsset(asset: Asset){
+        executor.execute {
+            assetDao.addAsset(asset)
+            Log.d(logTag, "Added ${asset.toString()}")
+        }
+    }
 
 }

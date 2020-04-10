@@ -26,6 +26,11 @@ class UserRepository(private val userDao: UserDao) {
     }
 
     fun getUser(email: String): User? = userDao.getUser(email)
-    fun addUser(user: User) = userDao.addUser(user)
+
+    fun addUser(user: User){
+        executor.execute{
+            userDao.addUser(user)
+        }
+    }
 
 }

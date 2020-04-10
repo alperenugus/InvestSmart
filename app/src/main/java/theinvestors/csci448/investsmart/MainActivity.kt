@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    companion object{
+        var email: String = "alperenugus@gmail.com"
+        var password: String = "123"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,8 +36,9 @@ class MainActivity : AppCompatActivity(){
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.homeScreenFragment, R.id.assetsFragment, R.id.currentAssetsFragment, R.id.favoriteCompaniesFragment
-        , R.id.investFragment, R.id.predictionFragment, R.id.resetPasswordFragment, R.id.resetAccountFragment), drawerLayout)
+            R.id.homeScreenFragment, R.id.currentAssetsFragment, R.id.favoriteCompaniesFragment,
+            R.id.investFragment, R.id.predictionFragment, R.id.resetPasswordFragment,
+            R.id.resetAccountFragment, R.id.aboutUsFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }

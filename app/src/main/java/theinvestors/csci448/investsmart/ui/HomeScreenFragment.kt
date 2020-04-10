@@ -37,29 +37,6 @@ class HomeScreenFragment: Fragment() {
         Log.d(logTag, "onCreateView() called")
 
         val view: View = inflater.inflate(R.layout.home_screen, container, false)
-
-        assetsBtn = view.findViewById(R.id.home_screen_assets_button)
-        favCompaniesBtn = view.findViewById(R.id.home_screen_fav_companies_button)
-        settingsButton = view.findViewById(R.id.home_screen_settings_button)
-
-        assetsBtn.setOnClickListener {
-            val action =
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToAssetsFragment()
-            findNavController().navigate(action)
-        }
-
-        favCompaniesBtn.setOnClickListener {
-            val action =
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToFavoriteCompaniesFragment()
-            findNavController().navigate(action)
-        }
-
-        settingsButton.setOnClickListener {
-            val action =
-                HomeScreenFragmentDirections.actionHomeScreenFragmentToSettingsFragment()
-            findNavController().navigate(action)
-        }
-
         return view
     }
 

@@ -8,8 +8,8 @@ import theinvestors.csci448.investsmart.data.asset.Asset
 
 class AssetHolder(val view: View) : RecyclerView.ViewHolder(view) {
     lateinit var asset: Asset
-    var companyNameTextView: TextView = itemView.findViewById(R.id.list_item_asset_company_name)
-    var ownedShareTextView: TextView = itemView.findViewById(R.id.list_item_asset_owned_share)
+    var companyNameTextView: TextView = itemView.findViewById(R.id.list_item_asset_company_name_text)
+    var ownedShareTextView: TextView = itemView.findViewById(R.id.list_item_asset_owned_share_text)
 
     fun bind(asset: Asset, clickListener: (Asset) -> Unit){
         this.asset = asset

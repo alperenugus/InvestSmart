@@ -9,9 +9,6 @@
             android:id="@+id/homeScreenFragment"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/assetsFragment"
-            android:title="@string/menu_assets" />
-        <item
             android:id="@+id/currentAssetsFragment"
             android:title="@string/menu_current_assets" />
         <item
@@ -29,6 +26,9 @@
         <item
             android:id="@+id/resetAccountFragment"
             android:title="@string/menu_reset_account" />
+        <item
+            android:id="@+id/aboutUsFragment"
+            android:title="@string/menu_about_us" />
 
     </group>
 </menu>

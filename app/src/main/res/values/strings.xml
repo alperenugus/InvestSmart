@@ -52,14 +52,17 @@
     <string name="confirm_reset_account">Are you sure you want to reset your account?</string>
 
     <!--about_us_screen-->
-    <string name="alperen_ugus">Alperen Ugus</string>
+    <string name="alperen_ugus">Alperen Ugus - Developer</string>
     <string name="about_alperen_ugus">Alperen is an awesome junior in Computer Science who is super cool.</string>
-    <string name="mackenzie_hull">Mackenzie Hull</string>
+    <string name="mackenzie_hull">Mackenzie Hull - Developer</string>
     <string name="about_mackenzie_hull">Kenzie is a junior in Computer Science</string>
-    <string name="seth_rose">Seth Rose</string>
+    <string name="seth_rose">Seth Rose - Developer</string>
     <string name="about_seth_rose">Seth is a super cool kid in Computer Science.</string>
-
-    <string name="Test">Test</string>
+    <string name="about_us_text">InvestSmart is a virtual stock market application which aims to educate people about
+        how the real stock market works. It is one of its kind since it is the only app that makes investment suggestions
+        to its users using machine learning algorithms. </string>
+    <string name="about_us_team"><u>Here is our team:</u></string>
+    <string name="about_us_header"><u>Who we are?</u></string>
 
     <!--buy/sell icons-->
     <string name="add">+</string>
@@ -94,6 +97,6 @@
     <string name="menu_prediction">Prediction</string>
     <string name="menu_reset_account">Reset Account</string>
     <string name="menu_reset_password">Reset Password</string>
-
+    <string name="menu_about_us">About Us</string>
     <string name="home_second">Home Second</string>
 </resources>

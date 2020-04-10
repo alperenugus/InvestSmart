@@ -5,86 +5,143 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/about_us_alperen_name"
-            android:text="@string/alperen_ugus"
-            android:gravity="left"
-            android:textColor="@color/colorText"
-            android:layout_margin="20dp">
-        </TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/about_us_alperen_info"
-            android:text="@string/about_alperen_ugus"
-            android:gravity="left"
-            android:textColor="@color/colorText"
-            android:layout_margin="20dp">
-        </TextView>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:background="@color/white"
         android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/about_us_mackenzie_hull"
-            android:text="@string/mackenzie_hull"
-            android:gravity="left"
+            android:id="@+id/about_us_header"
+            android:text="@string/about_us_header"
+            android:gravity="center"
             android:textColor="@color/colorText"
-            android:layout_margin="20dp">
+            android:layout_margin="10dp">
         </TextView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/about_us_mackenzie_info"
-            android:text="@string/about_mackenzie_hull"
+            android:id="@+id/about_us_text"
+            android:text="@string/about_us_text"
             android:gravity="left"
             android:textColor="@color/colorText"
-            android:layout_margin="20dp">
+            android:layout_margin="10dp">
         </TextView>
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:background="@color/white"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/about_us_seth_rose"
-            android:text="@string/seth_rose"
-            android:gravity="left"
-            android:textColor="@color/colorText"
-            android:layout_margin="20dp">
-        </TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/about_us_seth_info"
-            android:text="@string/about_seth_rose"
-            android:gravity="left"
-            android:textColor="@color/colorText"
-            android:layout_margin="20dp">
-        </TextView>
-    </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/about_us_team"
+            android:text="@string/about_us_team"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:layout_margin="10dp">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_alperen_name"
+                android:text="@string/alperen_ugus"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_alperen_info"
+                android:text="@string/about_alperen_ugus"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:layout_margin="5dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_mackenzie_hull"
+                android:text="@string/mackenzie_hull"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_mackenzie_info"
+                android:text="@string/about_mackenzie_hull"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:layout_margin="5dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_seth_rose"
+                android:text="@string/seth_rose"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_us_seth_info"
+                android:text="@string/about_seth_rose"
+                android:gravity="left"
+                android:textColor="@color/colorText"
+                android:layout_margin="10dp">
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

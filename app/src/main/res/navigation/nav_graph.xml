@@ -18,28 +18,11 @@
         android:name="theinvestors.csci448.investsmart.ui.HomeScreenFragment"
         android:label="HomeScreen" >
         <action
-            android:id="@+id/action_homeScreenFragment_to_assetsFragment"
-            app:destination="@id/assetsFragment" />
-        <action
             android:id="@+id/action_homeScreenFragment_to_favoriteCompaniesFragment"
             app:destination="@id/favoriteCompaniesFragment" />
         <action
             android:id="@+id/action_homeScreenFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/assetsFragment"
-        android:name="theinvestors.csci448.investsmart.ui.AssetsFragment"
-        android:label="Assets" >
-        <action
-            android:id="@+id/action_assetsFragment_to_currentAssetsFragment"
-            app:destination="@id/currentAssetsFragment" />
-        <action
-            android:id="@+id/action_assetsFragment_to_investFragment"
-            app:destination="@id/investFragment" />
-        <action
-            android:id="@+id/action_assetsFragment_to_favoriteCompaniesFragment"
-            app:destination="@id/favoriteCompaniesFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteCompaniesFragment"

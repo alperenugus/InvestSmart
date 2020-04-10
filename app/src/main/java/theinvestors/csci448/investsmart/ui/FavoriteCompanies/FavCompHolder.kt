@@ -10,7 +10,7 @@ class FavCompHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
     lateinit var favComp: FavComp
 
-    var favCompNameTextView: TextView = itemView.findViewById(R.id.list_item_fav_comp_name)
+    var favCompNameTextView: TextView = itemView.findViewById(R.id.list_item_fav_comp_name_text)
 
     fun bind(favComp: FavComp, clickListener: (FavComp) -> Unit){
         this.favComp = favComp
