@@ -11,26 +11,59 @@
         android:gravity="center"
         >
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dollar_sign"
+            android:padding="10dp"
+            android:layout_marginTop="30dp">
+
+        </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:id="@+id/home_screen_username"
-            android:text="@string/username"
+            android:id="@+id/home_screen_total_money"
+            android:text="@string/total_money"
             android:gravity="center"
-            android:textColor="@color/colorText"
-            >
+            android:textColor="@color/colorText">
         </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/home_screen_total_money_text"
+            android:text="$1000.0"
+            android:gravity="center"
+            android:textColor="@color/colorText">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:id="@+id/home_screen_ranking"
-            android:text="@string/ranking"
+            android:id="@+id/home_screen_history"
+            android:text="HISTORY DATA WILL BE POPULATED HERE!"
             android:gravity="center"
-            android:textColor="@color/colorText"
-            >
+            android:textColor="@color/colorText">
         </TextView>
-
 
     </LinearLayout>
 

@@ -15,9 +15,6 @@ private const val logTag: String = "HomeScreenFragment"
 
 class HomeScreenFragment: Fragment() {
 
-    private lateinit var assetsBtn: Button
-    private lateinit var favCompaniesBtn: Button
-    private lateinit var settingsButton: Button
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")

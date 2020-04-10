@@ -83,9 +83,19 @@ class FavoriteCompaniesFragment: Fragment() {
         )
 
         // Sample data
-//        var favComp: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "Apple")
-//        favCompViewModel.addFavComp(favComp)
-
+//        var favComp1: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "Apple")
+//        var favComp2: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "Samsung")
+//        var favComp3: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "Microsoft")
+//        var favComp4: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "Siemens")
+//        var favComp5: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "SpaceX")
+//        var favComp6: FavComp = FavComp(UUID.randomUUID(), MainActivity.email, "IBM")
+//
+//        favCompViewModel.addFavComp(favComp1)
+//        favCompViewModel.addFavComp(favComp2)
+//        favCompViewModel.addFavComp(favComp3)
+//        favCompViewModel.addFavComp(favComp4)
+//        favCompViewModel.addFavComp(favComp5)
+//        favCompViewModel.addFavComp(favComp6)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -17,9 +17,6 @@
 
     <!--home_screen-->
     <string name="username">UserName</string>
-    <string name="ranking">Ranking:#</string>
-    <string name="assets">Assets</string>
-    <string name="fav_companies">Favorite Companies</string>
     <string name="settings">Settings</string>
 
     <!--settings_screen-->
@@ -32,7 +29,7 @@
     <string name="policy">Terms of Service and Privacy Policy</string>
 
     <!--assets_screen-->
-    <string name="total_money">Total Money</string>
+    <string name="total_money">Total Money:</string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets">Current Assets</string>
     <string name="invest_sell">Invest/Sell</string>

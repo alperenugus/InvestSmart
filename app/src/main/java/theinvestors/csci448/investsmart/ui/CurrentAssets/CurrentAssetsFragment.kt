@@ -81,8 +81,20 @@ class CurrentAssetsFragment: Fragment() {
         )
 
         // Sample data
-//        var asset: Asset = Asset(UUID.randomUUID(), MainActivity.email, "SpaceX", 100)
-//        currentAssetsViewModel.addAsset(asset)
+//        var asset1: Asset = Asset(UUID.randomUUID(), MainActivity.email, "SpaceX", 100)
+//        var asset2: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Apple", 200)
+//        var asset3: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Microsoft", 300)
+//        var asset4: Asset = Asset(UUID.randomUUID(), MainActivity.email, "IBM", 50)
+//        var asset5: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Samsung", 75)
+//        var asset6: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Siemens", 140)
+//
+//        currentAssetsViewModel.addAsset(asset1)
+//        currentAssetsViewModel.addAsset(asset2)
+//        currentAssetsViewModel.addAsset(asset3)
+//        currentAssetsViewModel.addAsset(asset4)
+//        currentAssetsViewModel.addAsset(asset5)
+//        currentAssetsViewModel.addAsset(asset6)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

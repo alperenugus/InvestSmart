@@ -2,18 +2,16 @@ package theinvestors.csci448.investsmart.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
+
 
 private const val logTag: String = "LoginFragment"
 
@@ -62,6 +60,7 @@ class LoginFragment: Fragment() {
         welcomeText = view.findViewById(R.id.login_welcome_text)
 
         loginBtn.setOnClickListener {
+            MainActivity.signedIn = true
             val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
             findNavController().navigate(action)
         }

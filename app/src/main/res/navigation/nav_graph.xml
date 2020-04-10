@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="theinvestors.csci448.investsmart.ui.HomeScreenFragment"
-        android:label="HomeScreen" >
+        android:label="Home" >
         <action
             android:id="@+id/action_homeScreenFragment_to_favoriteCompaniesFragment"
             app:destination="@id/favoriteCompaniesFragment" />
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/investFragment"
         android:name="theinvestors.csci448.investsmart.ui.InvestFragment"
-        android:label="Invest/Sell" >
+        android:label="Invest" >
         <action
             android:id="@+id/action_investFragment_to_predictionFragment"
             app:destination="@id/predictionFragment" />
