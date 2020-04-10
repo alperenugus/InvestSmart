@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
 
     companion object{
         var email: String = "alperenugus@gmail.com"
-        var password: String = "123"
         var signedIn: Boolean = false;
     }
 

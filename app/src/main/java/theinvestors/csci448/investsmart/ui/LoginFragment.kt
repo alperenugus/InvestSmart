@@ -1,19 +1,29 @@
 package theinvestors.csci448.investsmart.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 
 
 private const val logTag: String = "LoginFragment"
+private const val RC_SIGN_IN: Int = 0
 
 class LoginFragment: Fragment() {
 
@@ -24,18 +34,16 @@ class LoginFragment: Fragment() {
     }
 
     private lateinit var loginInterface: LoginInterface
-
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
     private lateinit var loginBtn: Button
-    private lateinit var signUpBtn: Button
-
     private lateinit var welcomeText: TextView
 
-    private var email: String = "email"
-    private var password: String = "password"
+    private val gso =
+        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
 
-    
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
@@ -45,6 +53,7 @@ class LoginFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
+        mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
     }
 
     override fun onCreateView(
@@ -60,9 +69,7 @@ class LoginFragment: Fragment() {
         welcomeText = view.findViewById(R.id.login_welcome_text)
 
         loginBtn.setOnClickListener {
-            MainActivity.signedIn = true
-            val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
-            findNavController().navigate(action)
+            signIn()
         }
 
         // Lock the drawer
@@ -115,5 +122,48 @@ class LoginFragment: Fragment() {
     override fun onDetach() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
+    }
+
+    private fun signIn() {
+        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            val task =
+                GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        }
+    }
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account =
+                completedTask.getResult(ApiException::class.java)
+
+            Log.d(logTag, "Signed in successfully, show authenticated UI")
+
+            MainActivity.signedIn = true
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
+            findNavController().navigate(action)
+
+            if (account != null) {
+                MainActivity.email = account.email.toString()
+            }
+
+            // Signed in successfully, show authenticated UI.
+            //updateUI(account)
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w(logTag, "signInResult:failed code=" + e.statusCode)
+            //updateUI(null)
+        }
     }
 }
