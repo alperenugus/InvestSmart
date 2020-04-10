@@ -15,7 +15,7 @@
             android:id="@+id/login_welcome_text"
             android:text="@string/welcome"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorText"
             android:textSize="30dp"
             android:layout_margin="10dp">
 
@@ -39,7 +39,7 @@
                 android:id="@+id/login_email_text"
                 android:text="@string/email"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
             <EditText
@@ -63,7 +63,7 @@
                 android:id="@+id/login_password_text"
                 android:text="@string/password"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
 
@@ -100,7 +100,7 @@
                 android:id="@+id/login_new_account_text"
                 android:text="@string/new_account"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
 

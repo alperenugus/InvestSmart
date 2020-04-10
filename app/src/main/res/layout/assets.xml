@@ -16,7 +16,7 @@
             android:id="@+id/assets_total_money_text"
             android:text="@string/total_money"
             android:gravity="center"
-            android:textColor="#FFFFFF">
+            android:textColor="@color/colorText">
 
         </TextView>
 
@@ -26,7 +26,7 @@
             android:id="@+id/assets_middle_text"
             android:text="@string/assets_middle_text"
             android:gravity="center"
-            android:textColor="#FFFFFF">
+            android:textColor="@color/colorText">
 
         </TextView>
 
@@ -86,7 +86,7 @@
             android:id="@+id/assets_bottom_text_button"
             android:text="@string/assets_bottom_text"
             android:gravity="center"
-            android:textColor="#FFFFFF">
+            android:textColor="@color/colorText">
 
         </TextView>
 

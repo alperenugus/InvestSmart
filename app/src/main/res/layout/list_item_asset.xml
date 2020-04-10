@@ -11,13 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/company_name"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:id="@+id/list_item_asset_owned_share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/owned_shares"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@color/colorText"/>
 
 </LinearLayout>

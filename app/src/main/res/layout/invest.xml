@@ -10,14 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/username" />
+        android:text="@string/username"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/home_screen_ranking"
         android:text="@string/ranking"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textColor="@color/colorText"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,12 +28,14 @@
         <TextView
             android:id="@+id/companies"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"/>
         <TextView
             android:id="@+id/list_item_string"
             android:text="@string/predict"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText"/>
 
         <Button
             android:id="@+id/add"
@@ -56,7 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="There will be a list of companies in a viewPager here!">
+        android:text="There will be a list of companies in a viewPager here!"
+        android:textColor="@color/colorText">
 
     </TextView>
 

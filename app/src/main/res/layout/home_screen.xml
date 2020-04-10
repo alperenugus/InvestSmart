@@ -17,6 +17,7 @@
             android:id="@+id/home_screen_username"
             android:text="@string/username"
             android:gravity="center"
+            android:textColor="@color/colorText"
             >
         </TextView>
 
@@ -26,6 +27,7 @@
             android:id="@+id/home_screen_ranking"
             android:text="@string/ranking"
             android:gravity="center"
+            android:textColor="@color/colorText"
             >
         </TextView>
 

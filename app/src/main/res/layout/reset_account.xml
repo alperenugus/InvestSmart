@@ -20,7 +20,7 @@
                 android:id="@+id/reset_account_enter_password_text"
                 android:text="@string/enter_password"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="20dp">
             </TextView>
             <EditText
@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:padding="24dp"
                 android:textStyle="bold"
-                android:text="@string/confirm_reset_account" />
+                android:text="@string/confirm_reset_account"
+                android:textColor="@color/colorText"/>
             <Button
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -59,7 +60,7 @@
                 android:id="@+id/reset_password_bottom_text"
                 android:text="@string/reset_password_bottom_text"
                 android:gravity="center"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="20dp">
             </TextView>
         </LinearLayout>

@@ -16,6 +16,7 @@
             android:layout_height="100dp"
             android:id="@+id/settings_top_text"
             android:text="@string/account_settings"
+            android:textColor="@color/colorText"
             android:gravity="center"
             >
         </TextView>
@@ -25,6 +26,7 @@
             android:layout_height="100dp"
             android:id="@+id/settings_middle_text"
             android:text="@string/settings_middle_text"
+            android:textColor="@color/colorText"
             android:gravity="center"
             >
         </TextView>
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/settings_bottom_text"
             android:text="@string/policy"
+            android:textColor="@color/colorText"
             android:gravity="center"
             android:layout_margin="16dp">
 

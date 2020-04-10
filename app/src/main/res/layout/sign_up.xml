@@ -15,7 +15,7 @@
             android:id="@+id/sign_up_top_text"
             android:text="@string/sign_up"
             android:gravity="center"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/colorText"
             android:textSize="30dp"
             android:layout_margin="10dp">
 
@@ -39,7 +39,7 @@
                 android:id="@+id/sign_up_email_text"
                 android:text="@string/email"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
             <EditText
@@ -63,7 +63,7 @@
                 android:id="@+id/sign_up_password_text"
                 android:text="@string/password"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
 
@@ -82,7 +82,7 @@
                 android:id="@+id/sign_up_password_again_text"
                 android:text="@string/password_again"
                 android:gravity="left"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
 

@@ -20,13 +20,15 @@
         android:text="@string/time_predict"
         android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/predict_good" />
+        android:text="@string/predict_good"
+        android:textColor="@color/colorText"/>
 
     <Button
             android:id="@+id/predict_info"
