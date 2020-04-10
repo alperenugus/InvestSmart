@@ -3,11 +3,33 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    android:gravity="center">
+    android:background="@color/colorBackground">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_invest_smart"
+            android:text="@string/invest_smart"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="30dp"
+            android:padding="20dp">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:padding="20dp">
+
+        </ImageView>
 
         <TextView
             android:layout_width="match_parent"
@@ -17,9 +39,11 @@
             android:gravity="center"
             android:textColor="@color/colorText"
             android:textSize="30dp"
-            android:layout_margin="10dp">
+            android:padding="20dp">
 
         </TextView>
+
+
 
     </LinearLayout>
 
@@ -28,55 +52,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_email_text"
-                android:text="@string/email"
-                android:gravity="left"
-                android:textColor="@color/colorText"
-                android:layout_margin="10dp">
-            </TextView>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_email_edit_text"
-                android:gravity="left"
-                android:layout_margin="10dp"
-                android:hint="@string/email">
-            </EditText>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_password_text"
-                android:text="@string/password"
-                android:gravity="left"
-                android:textColor="@color/colorText"
-                android:layout_margin="10dp">
-            </TextView>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_password_edit_text"
-                android:gravity="left"
-                android:layout_margin="10dp"
-                android:hint="@string/password">
-            </EditText>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -103,16 +78,6 @@
                 android:textColor="@color/colorText"
                 android:layout_margin="10dp">
             </TextView>
-
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/login_signup_button"
-                android:text="@string/sign_up"
-                android:background="@drawable/button"
-                android:textColor="#FFFFFF"
-                android:layout_margin="8dp">
-            </Button>
 
         </LinearLayout>
     </LinearLayout>

@@ -19,6 +19,14 @@ private const val logTag: String = "LoginFragment"
 
 class LoginFragment: Fragment() {
 
+    // Interface to lock and unlock navigation drawer
+    interface LoginInterface {
+        fun LoginLockDrawer()
+        fun LoginUnlockDrawer()
+    }
+
+    private lateinit var loginInterface: LoginInterface
+
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginBtn: Button
@@ -28,11 +36,12 @@ class LoginFragment: Fragment() {
 
     private var email: String = "email"
     private var password: String = "password"
-    
+
     
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
+        loginInterface = context as LoginInterface
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,58 +58,16 @@ class LoginFragment: Fragment() {
 
         val view: View = inflater.inflate(R.layout.login , container, false)
 
-        emailEditText = view.findViewById(R.id.login_email_edit_text)
-        passwordEditText = view.findViewById(R.id.login_password_edit_text)
         loginBtn = view.findViewById(R.id.login_signin_button)
-        signUpBtn = view.findViewById(R.id.login_signup_button)
         welcomeText = view.findViewById(R.id.login_welcome_text)
 
-        emailEditText.addTextChangedListener(object: TextWatcher{
-
-            override fun afterTextChanged(s: Editable?) {
-                email = emailEditText.text.toString()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
-
-        passwordEditText.addTextChangedListener(object: TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-                password = passwordEditText.text.toString()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
-
         loginBtn.setOnClickListener {
-            
-            // Implement Database Login
-
-            if(email == "email" && password == "password"){
-                val action =
-                    LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
-                findNavController().navigate(action)
-            }
-
-
-
-        }
-
-        signUpBtn.setOnClickListener {
-            val action =
-                LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
             findNavController().navigate(action)
         }
 
-
+        // Lock the drawer
+        loginInterface.LoginLockDrawer()
 
         return view
     }
@@ -138,6 +105,7 @@ class LoginFragment: Fragment() {
     override fun onDestroyView() {
         Log.d(logTag, "onDestroyView() called")
         super.onDestroyView()
+        loginInterface.LoginUnlockDrawer()
     }
 
     override fun onDestroy() {

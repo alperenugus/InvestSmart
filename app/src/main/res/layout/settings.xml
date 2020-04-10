@@ -42,16 +42,6 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:id="@+id/settings_change_password_button"
-            android:layout_margin="8dp"
-            android:text="@string/change_password"
-            android:textColor="#FFFFFF"
-            android:background="@drawable/button">
-        </Button>
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
             android:id="@+id/settings_reset_account_button"
             android:layout_margin="8dp"
             android:text="@string/reset_account"

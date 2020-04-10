@@ -9,9 +9,6 @@
         <action
             android:id="@+id/action_loginFragment_to_homeScreenFragment"
             app:destination="@id/homeScreenFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
@@ -36,9 +33,6 @@
             android:id="@+id/action_settingsFragment_to_resetAccountFragment"
             app:destination="@id/resetAccountFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_resetPasswordFragment"
-            app:destination="@id/resetPasswordFragment" />
-        <action
             android:id="@+id/action_settingsFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
     </fragment>
@@ -46,10 +40,6 @@
         android:id="@+id/resetAccountFragment"
         android:name="theinvestors.csci448.investsmart.ui.ResetAccountFragment"
         android:label="Reset Account" />
-    <fragment
-        android:id="@+id/resetPasswordFragment"
-        android:name="theinvestors.csci448.investsmart.ui.ResetPasswordFragment"
-        android:label="Reset Password" />
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="theinvestors.csci448.investsmart.ui.AboutUsFragment"
@@ -70,12 +60,4 @@
         android:id="@+id/predictionFragment"
         android:name="theinvestors.csci448.investsmart.ui.PredictionFragment"
         android:label="Prediction" />
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="theinvestors.csci448.investsmart.ui.SignUpFragment"
-        android:label="Sign Up" >
-        <action
-            android:id="@+id/action_signUpFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
 </navigation>

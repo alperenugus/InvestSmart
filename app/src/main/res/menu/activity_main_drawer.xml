@@ -21,9 +21,6 @@
             android:id="@+id/predictionFragment"
             android:title="@string/menu_prediction" />
         <item
-            android:id="@+id/resetPasswordFragment"
-            android:title="@string/menu_reset_password" />
-        <item
             android:id="@+id/resetAccountFragment"
             android:title="@string/menu_reset_account" />
         <item
