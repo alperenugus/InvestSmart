@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +16,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import theinvestors.csci448.investsmart.api.CompanyValue
+import theinvestors.csci448.investsmart.api.StockService
 import theinvestors.csci448.investsmart.ui.LoginFragment
 
 private const val logTag: String = "MainActivity"
@@ -22,10 +25,15 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var stockService: StockService
+
 
     companion object{
         var email: String = "alperenugus@gmail.com"
         var signedIn: Boolean = false;
+        lateinit var companyNames: MutableList<String>
+        lateinit var companyValues: MutableMap<String, CompanyValue>
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +48,24 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.homeScreenFragment, R.id.currentAssetsFragment, R.id.favoriteCompaniesFragment,
+            R.id.homeScreenFragment, R.id.currentAssetsFragment,
             R.id.investFragment, R.id.predictionFragment,
             R.id.resetAccountFragment, R.id.aboutUsFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        stockService = StockService()
+        companyNames = ArrayList()
+        companyValues = HashMap()
+        companyNames.add("AAPL")
+        companyNames.add("AMZN")
+        companyNames.add("IBM")
+        companyNames.add("MSFT")
+        companyNames.add("PYPL")
+
+        for (i in 0 until companyNames.size){
+            getValues(companyNames[i])
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,5 +99,18 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
     override fun LoginUnlockDrawer() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         Log.d(logTag, "LoginUnlockDrawer() called")
+    }
+
+    fun getValues(companyName: String){
+
+        var companyValue = stockService.getValue(companyName)
+
+        companyValue.observe(
+            this,
+            Observer { result -> result.let {
+                companyValues.put(companyName, result)
+            }
+            }
+        )
     }
 }

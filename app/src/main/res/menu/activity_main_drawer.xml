@@ -12,9 +12,6 @@
             android:id="@+id/currentAssetsFragment"
             android:title="@string/menu_current_assets" />
         <item
-            android:id="@+id/favoriteCompaniesFragment"
-            android:title="@string/menu_favcomps" />
-        <item
             android:id="@+id/investFragment"
             android:title="@string/menu_invest" />
         <item
