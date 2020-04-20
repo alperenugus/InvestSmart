@@ -158,10 +158,6 @@ class LoginFragment: Fragment() {
                 MainActivity.name = account.displayName.toString()
             }
 
-            else{
-                Log.d(logTag, "ACCOUNT IS NULL")
-            }
-
             // Signed in successfully, show authenticated UI.
             //updateUI(account)
         } catch (e: ApiException) {
