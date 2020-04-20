@@ -21,25 +21,26 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:textColor="@color/colorText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="8dp"
+        android:padding="5dp"
         android:text="@string/predict_good"
         android:textColor="@color/colorText"/>
 
     <Button
-            android:id="@+id/predict_info"
-            android:layout_width="150dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/button"
-            android:text="@string/predict_info"
-            android:textColor="#FFFFFF" />
+        android:id="@+id/predict_info"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/button"
+        android:text="@string/predict_info"
+        android:textColor="#FFFFFF" />
     </LinearLayout>
 
 
