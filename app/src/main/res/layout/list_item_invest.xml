@@ -75,7 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
-                    android:text="o:"
+                    android:text="@string/price_o"
                     >
                 </TextView>
 
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
-                    android:text="h:"
+                    android:text="@string/price_h"
                     >
                 </TextView>
 
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
-                    android:text="l:"
+                    android:text="@string/price_l"
                     >
                 </TextView>
 
@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorText"
-                    android:text="pc:"
+                    android:text="@string/price_pc"
                     >
                 </TextView>
 

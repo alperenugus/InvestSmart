@@ -98,4 +98,8 @@
     <string name="abbreviations">o : opening h : high, l : low, pc : previous closing</string>
     <string name="symbol">Symbol:</string>
     <string name="current_price">Current Price: $</string>
+    <string name="price_o">o: $</string>
+    <string name="price_h">h: $</string>
+    <string name="price_l">l: $</string>
+    <string name="price_pc">pc: $</string>
 </resources>
