@@ -1,10 +1,7 @@
 package theinvestors.csci448.investsmart.data.asset
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface AssetDao {
@@ -14,4 +11,7 @@ interface AssetDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addAsset(asset: Asset)
+
+    @Query("DELETE FROM asset")
+    fun deleteAll()
 }

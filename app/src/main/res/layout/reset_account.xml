@@ -17,8 +17,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/reset_account_enter_password_text"
-                android:text="@string/enter_password"
+                android:id="@+id/reset_account_enter_email_text"
+                android:text="@string/enter_email"
                 android:gravity="left"
                 android:textColor="@color/colorText"
                 android:layout_margin="20dp">
@@ -26,10 +26,10 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/reset_account_password_edit_text"
+                android:id="@+id/reset_account_email_edit_text"
                 android:gravity="left"
                 android:layout_margin="20dp"
-                android:hint="@string/password_hint_text">
+                android:hint="@string/email_hint_text">
             </EditText>
         </LinearLayout>
 
@@ -57,8 +57,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/reset_password_bottom_text"
-                android:text="@string/reset_password_bottom_text"
+                android:id="@+id/reset_account_bottom_text"
+                android:text="@string/reset_account_bottom_text"
                 android:gravity="center"
                 android:textColor="@color/colorText"
                 android:layout_margin="20dp">

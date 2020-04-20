@@ -31,23 +31,17 @@
     <!--assets_screen-->
     <string name="total_money">Total Money:</string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
-    <string name="current_assets">Current Assets</string>
+    <string name="current_assets"><u>Current Assets:</u></string>
     <string name="invest_sell">Invest/Sell</string>
     <string name="assets_bottom_text">Use your money in a smart way!</string>
 
-    <!--reset_password_screen-->
-    <string name="enter_old_password">Enter your old password:</string>
-    <string name="old_password">Old Password</string>
-    <string name="enter_new_password">Enter your new password:</string>
-    <string name="new_password">New Password</string>
-    <string name="confirm_new_password">Confirm New Password</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="reset_password_bottom_text">Having Problems? Click for Support.</string>
 
     <!--reset_account screen-->
-    <string name="enter_password">Enter your password</string>
-    <string name="password_hint_text">Password</string>
+    <string name="enter_email">Enter your email</string>
+    <string name="email_hint_text">Email</string>
     <string name="confirm_reset_account">Are you sure you want to reset your account?</string>
+    <string name="reset_account_bottom_text">Having Problems? Click for Support.</string>
+    <string name="unmatched">Emails did not match!</string>
 
     <!--about_us_screen-->
     <string name="alperen_ugus">Alperen Ugus - Developer</string>
@@ -76,6 +70,7 @@
     <!--current_assets-->
     <string name="owned_shares">Owned Shares:</string>
     <string name="company_name">Company Name:</string>
+    <string name="signed_in">You have signed in with:</string>
 
     <!--Navigation-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -97,4 +92,10 @@
     <string name="menu_reset_password">Reset Password</string>
     <string name="menu_about_us">About Us</string>
     <string name="home_second">Home Second</string>
+
+    <string name="hello">Hello</string>
+    <string name="invest_text">You can invest your money to companies here!</string>
+    <string name="abbreviations">o : opening h : high, l : low, pc : previous closing</string>
+    <string name="symbol">Symbol:</string>
+    <string name="current_price">Current Price: $</string>
 </resources>

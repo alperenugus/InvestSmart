@@ -4,6 +4,24 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/invest_text"
+        android:textColor="@color/colorText"
+        android:gravity="center"
+        android:padding="10dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/abbreviations"
+        android:textColor="@color/colorText"
+        android:gravity="center"
+        android:padding="10dp">
+    </TextView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         xmlns:android = "http://schemas.android.com/apk/res/android"

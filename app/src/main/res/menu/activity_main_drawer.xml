@@ -4,13 +4,9 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/homeScreenFragment"
-            android:title="@string/menu_home" />
         <item
             android:id="@+id/currentAssetsFragment"
-            android:title="@string/menu_current_assets" />
+            android:title="@string/menu_home" />
         <item
             android:id="@+id/investFragment"
             android:title="@string/menu_invest" />

@@ -1,16 +1,20 @@
 package theinvestors.csci448.investsmart.ui.Invest
 
 import android.content.Context
+import android.graphics.drawable.ClipDrawable.HORIZONTAL
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
+import theinvestors.csci448.investsmart.api.CompanyValue
+
 
 private const val logTag: String = "InvestFragment"
 
@@ -32,9 +36,10 @@ class InvestFragment: Fragment() {
         companies = ArrayList()
 
         MainActivity.companyValues.forEach {
-            var company: Company = Company("", 0.0)
+            var companyValue: CompanyValue = CompanyValue("", "", "", "", "", "")
+            var company: Company = Company("", companyValue)
             company.companyName = it.key
-            company.companyValue = it.value.open.toDouble()
+            company.companyValue = it.value
 
             companies.add(company)
         }
@@ -51,6 +56,9 @@ class InvestFragment: Fragment() {
 
         recyclerView = view.findViewById(R.id.invest_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        val itemDecor = DividerItemDecoration(requireContext(), HORIZONTAL)
+        recyclerView.addItemDecoration(itemDecor)
 
         updateUI(emptyList())
 

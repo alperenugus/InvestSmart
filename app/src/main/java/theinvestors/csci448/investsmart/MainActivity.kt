@@ -29,7 +29,9 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
 
 
     companion object{
-        var email: String = "alperenugus@gmail.com"
+        var name: String = "investsmart"
+        var email: String = "investsmartmines@gmail.com"
+        var totalMoney: Double = 1000.0
         var signedIn: Boolean = false;
         lateinit var companyNames: MutableList<String>
         lateinit var companyValues: MutableMap<String, CompanyValue>
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.homeScreenFragment, R.id.currentAssetsFragment,
+            R.id.currentAssetsFragment,
             R.id.investFragment, R.id.predictionFragment,
             R.id.resetAccountFragment, R.id.aboutUsFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)

@@ -1,15 +1,18 @@
 package theinvestors.csci448.investsmart.ui.CurrentAssets
 
 import android.content.Context
+import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.MainActivity
@@ -24,6 +27,9 @@ class CurrentAssetsFragment: Fragment() {
     private lateinit var assetsRecyclerView: RecyclerView
     private lateinit var adapter: AssetAdapter
     private lateinit var factory: CurrentAssetsViewModelFactory
+    private lateinit var nameTextView: TextView
+    private lateinit var emailTextView: TextView
+    private lateinit var totalMoneyTextView: TextView
 
     private val currentAssetsViewModel: CurrentAssetsViewModel by lazy {
         ViewModelProvider(this@CurrentAssetsFragment, factory)
@@ -59,6 +65,18 @@ class CurrentAssetsFragment: Fragment() {
 
         assetsRecyclerView = view.findViewById(R.id.current_assets_recycler_view)
         assetsRecyclerView.layoutManager = LinearLayoutManager(context)
+
+        val itemDecor = DividerItemDecoration(requireContext(), ClipDrawable.HORIZONTAL)
+        assetsRecyclerView.addItemDecoration(itemDecor)
+
+        nameTextView = view.findViewById(R.id.name_text_view)
+        nameTextView.text = " " + MainActivity.name + "!"
+
+        emailTextView = view.findViewById(R.id.email_text_view)
+        emailTextView.text = MainActivity.email
+
+        totalMoneyTextView = view.findViewById(R.id.total_money_text_view)
+        totalMoneyTextView.text = MainActivity.totalMoney.toString()
 
         updateUI(emptyList())
 

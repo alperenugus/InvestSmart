@@ -150,11 +150,12 @@ class LoginFragment: Fragment() {
             Log.d(logTag, "Signed in successfully, show authenticated UI")
 
             MainActivity.signedIn = true
-            val action = LoginFragmentDirections.actionLoginFragmentToHomeScreenFragment()
+            val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
             findNavController().navigate(action)
 
             if (account != null) {
                 MainActivity.email = account.email.toString()
+                MainActivity.name = account.displayName.toString()
             }
 
             // Signed in successfully, show authenticated UI.
