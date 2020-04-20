@@ -1,9 +1,14 @@
 package theinvestors.csci448.investsmart.ui.Invest
 
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.R
+
+private const val logTag: String = "InvestHolder"
 
 class InvestHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
@@ -15,6 +20,7 @@ class InvestHolder(val view: View) : RecyclerView.ViewHolder(view) {
     var companyH: TextView = itemView.findViewById(R.id.invest_company_h)
     var companyL: TextView = itemView.findViewById(R.id.invest_company_l)
     var companyPc: TextView = itemView.findViewById(R.id.invest_company_pc)
+    var investBtn: Button = itemView.findViewById(R.id.list_item_invest_button)
 
 
 
@@ -27,6 +33,15 @@ class InvestHolder(val view: View) : RecyclerView.ViewHolder(view) {
         companyH.text = company.companyValue.high
         companyL.text = company.companyValue.low
         companyPc.text = company.companyValue.pc
+
+        investBtn.setOnClickListener {
+            Log.d(logTag, "Invest Clicked.")
+            Log.d(logTag, "${companyNameTextView.text}.")
+            //view.findNavController().navigate(R.id.buyFragment)
+        }
+
+
+
     }
 
 }
