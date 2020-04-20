@@ -20,7 +20,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="@string/about_us_header"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorPurple"
             android:textSize="20sp"></TextView>
         <TextView
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="@string/about_us_team"
-            android:textColor="@color/colorText"
+            android:textColor="@color/colorPurple"
             android:textSize="20sp"></TextView>
 
         <LinearLayout
@@ -79,6 +79,7 @@
                     android:id="@+id/developer_name_alperen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
                     android:text="@string/developer_text"
                     android:textColor="@color/colorText"
                     android:textSize="14sp"></TextView>
@@ -124,6 +125,7 @@
                     android:id="@+id/developer_name_kenzie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
                     android:text="@string/developer_text"
                     android:textColor="@color/colorText"
                     android:textSize="14sp"></TextView>
@@ -171,6 +173,7 @@
                     android:id="@+id/developer_name_seth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5sp"
                     android:text="@string/developer_text"
                     android:textColor="@color/colorText"
                     android:textSize="14sp"></TextView>

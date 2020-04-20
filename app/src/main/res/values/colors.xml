@@ -7,4 +7,6 @@
     <color name="colorText">#171b25</color>
     <color name="colorBackground">#ede8db</color>
     <color name="colorButton">#565e75</color>
+    <color name="colorBlue">#3d2899</color>
+    <color name="colorPurple">#635675</color>
 </resources>

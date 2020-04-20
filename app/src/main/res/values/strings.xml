@@ -21,7 +21,7 @@
 
     <!--settings_screen-->
     <string name="account_settings">Account Settings</string>
-    <string name="settings_middle_text">You can change your password, and e-mail or reset your account.</string>
+    <string name="settings_middle_text">You can change your password, your e-mail, or reset your account.</string>
     <string name="change_password">Change Password</string>
     <string name="change_email">Change e-mail</string>
     <string name="reset_account">Reset Account</string>
@@ -29,7 +29,7 @@
     <string name="policy">Terms of Service and Privacy Policy</string>
 
     <!--assets_screen-->
-    <string name="total_money">Total Money:</string>
+    <string name="total_money">Total Money: </string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets"><u>Current Assets:</u></string>
     <string name="invest_sell">Invest/Sell</string>
@@ -63,15 +63,15 @@
 
     <!--prediction-->
     <string name="predict">Prediction</string>
-    <string name="time_predict">These are graphs showing yearly and weekly changes of the companies\' stock value.</string>
+    <string name="time_predict">These graphs show yearly and weekly changes of the companies\' stock value.</string>
     <string name="predict_good">We recommend purchasing more stock</string>
     <string name="predict_bad">We do not recommend purchasing more stock</string>
     <string name="predict_info">Click here to see how the algorithm works!</string>
 
     <!--current_assets-->
-    <string name="owned_shares">Owned Shares:</string>
-    <string name="company_name">Company Name:</string>
-    <string name="signed_in">You have signed in with:</string>
+    <string name="owned_shares">Owned Shares: </string>
+    <string name="company_name">Company Name: </string>
+    <string name="signed_in">You have signed in with: </string>
 
     <!--Navigation-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -96,11 +96,11 @@
 
     <string name="hello">Hello</string>
     <string name="invest_text">You can invest your money to companies here!</string>
-    <string name="abbreviations">o : opening h : high, l : low, pc : previous closing</string>
-    <string name="symbol">Symbol:</string>
+    <string name="abbreviations">O : Opening H : High, L : Low, PC : Previous Closing</string>
+    <string name="symbol">Symbol: </string>
     <string name="current_price">Current Price: $</string>
-    <string name="price_o">o: $</string>
-    <string name="price_h">h: $</string>
-    <string name="price_l">l: $</string>
-    <string name="price_pc">pc: $</string>
+    <string name="price_o">O: $</string>
+    <string name="price_h">H: $</string>
+    <string name="price_l">L: $</string>
+    <string name="price_pc">PC: $</string>
 </resources>

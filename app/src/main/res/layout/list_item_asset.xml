@@ -16,8 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/company_name"
-            android:textSize="14sp"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorPurple"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/list_item_asset_company_name_text"
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text=""
             android:textSize="14sp"
-            android:textColor="@color/colorText"/>
+            android:textColor="@color/colorPurple"/>
 
     </LinearLayout>
 
