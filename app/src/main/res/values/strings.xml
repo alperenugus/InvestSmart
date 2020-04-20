@@ -103,4 +103,7 @@
     <string name="price_h">H: $</string>
     <string name="price_l">L: $</string>
     <string name="price_pc">PC: $</string>
+    <string name="sure">Are you sure to reset your account?</string>
+    <string name="proceed">Proceed</string>
+    <string name="cancel">Cancel</string>
 </resources>

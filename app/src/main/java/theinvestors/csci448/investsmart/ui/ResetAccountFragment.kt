@@ -1,6 +1,8 @@
 package theinvestors.csci448.investsmart.ui
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -70,9 +72,30 @@ class ResetAccountFragment: Fragment() {
             }
 
             else{
-                assetRepository.deleteAll()
-                var action = ResetAccountFragmentDirections.actionResetAccountFragmentToCurrentAssetsFragment()
-                findNavController().navigate(action)
+
+                val dialogBuilder = AlertDialog.Builder(requireContext())
+
+                dialogBuilder.setMessage(R.string.sure)
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton(R.string.proceed, DialogInterface.OnClickListener {
+                            dialog, id ->
+                        assetRepository.deleteAll()
+                        var action = ResetAccountFragmentDirections.actionResetAccountFragmentToCurrentAssetsFragment()
+                        findNavController().navigate(action)
+                    })
+                    // negative button text and action
+                    .setNegativeButton(R.string.cancel, DialogInterface.OnClickListener {
+                            dialog, id -> dialog.cancel()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle(R.string.reset_account)
+                // show alert dialog
+                alert.show()
             }
 
 
