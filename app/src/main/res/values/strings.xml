@@ -63,7 +63,7 @@
 
     <!--prediction-->
     <string name="predict">Prediction</string>
-    <string name="time_predict">These are graphs showing yearly and weekly changes of the companies stock value.</string>
+    <string name="time_predict">These are graphs showing yearly and weekly changes of the companies\' stock value.</string>
     <string name="predict_good">We recommend purchasing more stock</string>
     <string name="predict_bad">We do not recommend purchasing more stock</string>
     <string name="predict_info">Click here to see how the algorithm works!</string>
