@@ -12,15 +12,16 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:orientation="vertical">
+
         <TextView
+            android:id="@+id/about_us_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/about_us_header"
-            android:text="@string/about_us_header"
+            android:layout_margin="10dp"
             android:gravity="center"
+            android:text="@string/about_us_header"
             android:textColor="@color/colorText"
-            android:layout_margin="10dp">
-        </TextView>
+            android:textSize="20sp"></TextView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,14 +43,14 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/about_us_team"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/about_us_team"
-            android:text="@string/about_us_team"
+            android:layout_margin="10dp"
             android:gravity="center"
+            android:text="@string/about_us_team"
             android:textColor="@color/colorText"
-            android:layout_margin="10dp">
-        </TextView>
+            android:textSize="20sp"></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,15 +59,31 @@
             android:background="@drawable/border"
             android:layout_margin="5dp">
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/about_us_alperen_name"
-                android:text="@string/alperen_ugus"
-                android:gravity="left"
-                android:textColor="@color/colorText"
-                android:layout_margin="10dp">
-            </TextView>
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="left">
+
+                <TextView
+                    android:id="@+id/about_us_alperen_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/alperen_ugus"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/developer_name_alperen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/developer_text"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"></TextView>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -87,17 +104,31 @@
             android:orientation="vertical"
             android:background="@drawable/border"
             android:layout_margin="5dp">
-
-
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/about_us_mackenzie_hull"
-                android:text="@string/mackenzie_hull"
-                android:gravity="left"
-                android:textColor="@color/colorText"
-                android:layout_margin="10dp">
-            </TextView>
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="left">
+
+                <TextView
+                    android:id="@+id/about_us_mackenzie_hull"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mackenzie_hull"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/developer_name_kenzie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/developer_text"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"></TextView>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -120,16 +151,33 @@
             android:background="@drawable/border"
             android:layout_margin="5dp">
 
-
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/about_us_seth_rose"
-                android:text="@string/seth_rose"
-                android:gravity="left"
-                android:textColor="@color/colorText"
-                android:layout_margin="10dp">
-            </TextView>
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="left">
+
+                <TextView
+                    android:id="@+id/about_us_seth_rose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seth_rose"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/developer_name_seth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/developer_text"
+                    android:textColor="@color/colorText"
+                    android:textSize="14sp"></TextView>
+
+            </LinearLayout>
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
