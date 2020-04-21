@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreference
+        android:key="database_save"
+        android:title="Hello"
+        >
+    </SwitchPreference>
+
+    <Preference
+        android:key="database_delete"
+        android:title="Hello">
+    </Preference>
+
+</PreferenceScreen>

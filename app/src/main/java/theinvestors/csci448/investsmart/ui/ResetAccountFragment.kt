@@ -1,5 +1,6 @@
 package theinvestors.csci448.investsmart.ui
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -18,6 +20,7 @@ import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.AssetRepository
+
 
 private const val logTag: String = "ResetAccountFragment"
 
@@ -81,7 +84,16 @@ class ResetAccountFragment: Fragment() {
                     // positive button text and action
                     .setPositiveButton(R.string.proceed, DialogInterface.OnClickListener {
                             dialog, id ->
+
+                        // Clear database
                         assetRepository.deleteAll()
+
+                        // Hide keyboard
+                        val imm: InputMethodManager =
+                            activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+
+                        // Navigate to home
                         var action = ResetAccountFragmentDirections.actionResetAccountFragmentToCurrentAssetsFragment()
                         findNavController().navigate(action)
                     })

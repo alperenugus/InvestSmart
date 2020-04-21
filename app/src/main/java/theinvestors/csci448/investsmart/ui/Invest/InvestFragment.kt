@@ -7,13 +7,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.api.CompanyValue
+import theinvestors.csci448.investsmart.data.asset.Asset
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 private const val logTag: String = "InvestFragment"
@@ -23,6 +29,13 @@ class InvestFragment: Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InvestAdapter
     private lateinit var companies: MutableList<Company>
+    private lateinit var factory: InvestViewModelFactory
+
+    private val investViewModel: InvestViewModel by lazy {
+        ViewModelProvider(this@InvestFragment, factory)
+            .get(InvestViewModel::class.java)
+    }
+
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
@@ -32,6 +45,7 @@ class InvestFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
+        factory = InvestViewModelFactory(requireContext())
 
         companies = ArrayList()
 
@@ -67,6 +81,15 @@ class InvestFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        investViewModel.currentAssets.observe(
+            viewLifecycleOwner,
+            androidx.lifecycle.Observer { assetList ->
+                assetList.let {
+                    Log.d(logTag, "Got assetList ${assetList.toString()}")
+                }
+            }
+        )
 
         updateUI(companies)
     }
@@ -114,6 +137,41 @@ class InvestFragment: Fragment() {
     fun updateUI(companies: List<Company>){
         adapter = InvestAdapter(companies)
         recyclerView.adapter = adapter
+    }
+
+    inner class InvestHolder(val view: View) : RecyclerView.ViewHolder(view) {
+
+        private lateinit var company: Company
+
+        var companyNameTextView: TextView = itemView.findViewById(R.id.invest_company_name)
+        var companyValue: TextView = itemView.findViewById(R.id.invest_company_value)
+        var companyO: TextView = itemView.findViewById(R.id.invest_company_o)
+        var companyH: TextView = itemView.findViewById(R.id.invest_company_h)
+        var companyL: TextView = itemView.findViewById(R.id.invest_company_l)
+        var companyPc: TextView = itemView.findViewById(R.id.invest_company_pc)
+        var investBtn: Button = itemView.findViewById(R.id.list_item_invest_button)
+
+
+        fun bind(company: Company){
+            this.company = company
+            companyNameTextView.text = company.companyName
+            companyValue.text = company.companyValue.current
+            companyO.text = company.companyValue.open
+            companyH.text = company.companyValue.high
+            companyL.text = company.companyValue.low
+            companyPc.text = company.companyValue.pc
+
+            investBtn.setOnClickListener {
+                Log.d(logTag, "Invest Clicked.")
+                Log.d(logTag, "${companyNameTextView.text}.")
+
+                var asset: Asset = Asset(UUID.randomUUID(), MainActivity.email, companyNameTextView.text.toString(), 5)
+                //factory = InvestViewModelFactory(requireContext())
+                //investViewModel.addAsset(asset)
+
+                //view.findNavController().navigate(R.id.buyFragment)
+            }
+        }
     }
 
 }
