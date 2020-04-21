@@ -24,6 +24,7 @@ import theinvestors.csci448.investsmart.R
 
 private const val logTag: String = "LoginFragment"
 private const val RC_SIGN_IN: Int = 0
+private const val CLIENT_ID: String = "365224585407-9b1eg074rcr6g70p342ggr7j3q7vpmr4.apps.googleusercontent.com"
 
 class LoginFragment: Fragment() {
 
@@ -40,6 +41,7 @@ class LoginFragment: Fragment() {
     private val gso =
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
+            .requestIdToken(CLIENT_ID)
             .build()
 
     private lateinit var mGoogleSignInClient: GoogleSignInClient
