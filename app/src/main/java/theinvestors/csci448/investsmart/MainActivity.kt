@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView
 import theinvestors.csci448.investsmart.api.CompanyValue
 import theinvestors.csci448.investsmart.api.StockService
 import theinvestors.csci448.investsmart.ui.LoginFragment
+import theinvestors.csci448.investsmart.util.NetworkUtil
 
 private const val logTag: String = "MainActivity"
 class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var stockService: StockService
+    private var networkUtil: NetworkUtil = NetworkUtil()
 
 
     companion object{
@@ -65,8 +67,13 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         companyNames.add("MSFT")
         companyNames.add("PYPL")
 
-        for (i in 0 until companyNames.size){
-            getValues(companyNames[i])
+        if(networkUtil.isNetworkAvailableAndConnected(this)){
+            for (i in 0 until companyNames.size){
+                getValues(companyNames[i])
+            }
+        }
+        else{
+            Toast.makeText(this, R.string.internet, Toast.LENGTH_SHORT).show()
         }
     }
 

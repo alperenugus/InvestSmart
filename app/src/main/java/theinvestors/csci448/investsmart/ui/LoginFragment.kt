@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -20,6 +21,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
+import theinvestors.csci448.investsmart.util.NetworkUtil
 
 
 private const val logTag: String = "LoginFragment"
@@ -37,6 +39,7 @@ class LoginFragment: Fragment() {
     private lateinit var loginInterface: LoginInterface
     private lateinit var loginBtn: Button
     private lateinit var welcomeText: TextView
+    private var networkUtil: NetworkUtil = NetworkUtil()
 
     private val gso =
         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -71,7 +74,8 @@ class LoginFragment: Fragment() {
         welcomeText = view.findViewById(R.id.login_welcome_text)
 
         loginBtn.setOnClickListener {
-            signIn()
+            if(networkUtil.isNetworkAvailableAndConnected(requireActivity())) signIn()
+            else Toast.makeText(requireContext(), R.string.internet, Toast.LENGTH_SHORT).show()
         }
 
         // Lock the drawer

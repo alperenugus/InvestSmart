@@ -2,6 +2,8 @@ package theinvestors.csci448.investsmart.ui.Invest
 
 import android.content.Context
 import android.graphics.drawable.ClipDrawable.HORIZONTAL
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -173,5 +176,4 @@ class InvestFragment: Fragment() {
             }
         }
     }
-
 }
