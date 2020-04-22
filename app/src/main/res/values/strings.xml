@@ -107,4 +107,7 @@
     <string name="proceed">Proceed</string>
     <string name="cancel">Cancel</string>
     <string name="internet">Internet connection is required!</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="question_mark">\?</string>
 </resources>

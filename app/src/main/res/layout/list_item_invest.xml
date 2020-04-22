@@ -168,7 +168,17 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:id="@+id/list_item_invest_button"
-        android:text="+">
+        android:text="@string/plus">
     </Button>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:id="@+id/list_item_predict_button"
+        android:text="@string/question_mark">
+    </Button>
+
+
 
 </LinearLayout>

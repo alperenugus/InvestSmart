@@ -1,6 +1,7 @@
 package theinvestors.csci448.investsmart.data.user
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import java.util.concurrent.Executors
 
 class UserRepository(private val userDao: UserDao) {
@@ -25,11 +26,17 @@ class UserRepository(private val userDao: UserDao) {
         }
     }
 
-    fun getUser(email: String): User? = userDao.getUser(email)
+    fun getUser(email: String): LiveData<User?> = userDao.getUser(email)
 
     fun addUser(user: User){
         executor.execute{
             userDao.addUser(user)
+        }
+    }
+
+    fun deleteUser(email: String){
+        executor.execute{
+            userDao.deleteUser(email)
         }
     }
 

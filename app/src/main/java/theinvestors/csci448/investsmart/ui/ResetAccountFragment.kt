@@ -20,6 +20,9 @@ import androidx.navigation.fragment.findNavController
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.AssetRepository
+import theinvestors.csci448.investsmart.data.user.User
+import theinvestors.csci448.investsmart.data.user.UserRepository
+import java.util.*
 
 
 private const val logTag: String = "ResetAccountFragment"
@@ -30,17 +33,19 @@ class ResetAccountFragment: Fragment() {
     private var inputEmail: String = ""
     private lateinit var resetBtn: Button
     private lateinit var assetRepository: AssetRepository
+    private lateinit var userRepository: UserRepository
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
         super.onAttach(context)
-
-        assetRepository = AssetRepository.getInstance(requireContext())!!
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
+        assetRepository = AssetRepository.getInstance(requireContext())!!
+        userRepository = UserRepository.getInstance(requireContext())!!
+
     }
 
     override fun onCreateView(
@@ -87,6 +92,10 @@ class ResetAccountFragment: Fragment() {
 
                         // Clear database
                         assetRepository.deleteAll()
+                        userRepository.deleteUser(MainActivity.email)
+
+                        var user: User = User(UUID.randomUUID(), MainActivity.email, 1000.0)
+                        userRepository.addUser(user)
 
                         // Hide keyboard
                         val imm: InputMethodManager =

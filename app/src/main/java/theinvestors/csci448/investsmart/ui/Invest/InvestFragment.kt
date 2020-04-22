@@ -171,8 +171,8 @@ class InvestFragment: Fragment() {
 
                 var asset: Asset = Asset(UUID.randomUUID(), MainActivity.email, companyNameTextView.text.toString(), 5)
                 Log.d(logTag, context.toString())
-                factory = InvestViewModelFactory(context)
-                investViewModel.addAsset(asset)
+                //factory = InvestViewModelFactory(context)
+                //investViewModel.addAsset(asset)
 
                 //view.findNavController().navigate(R.id.buyFragment)
             }

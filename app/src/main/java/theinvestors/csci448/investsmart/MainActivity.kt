@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
     private lateinit var stockService: StockService
     private var networkUtil: NetworkUtil = NetworkUtil()
 
-
     companion object{
         var name: String = "investsmart"
         var email: String = "investsmartmines@gmail.com"
@@ -75,6 +74,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         else{
             Toast.makeText(this, R.string.internet, Toast.LENGTH_SHORT).show()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

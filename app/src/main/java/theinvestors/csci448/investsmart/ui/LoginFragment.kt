@@ -12,6 +12,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -21,7 +23,10 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
+import theinvestors.csci448.investsmart.data.user.User
+import theinvestors.csci448.investsmart.data.user.UserRepository
 import theinvestors.csci448.investsmart.util.NetworkUtil
+import java.util.*
 
 
 private const val logTag: String = "LoginFragment"
@@ -29,6 +34,9 @@ private const val RC_SIGN_IN: Int = 0
 private const val CLIENT_ID: String = "365224585407-9b1eg074rcr6g70p342ggr7j3q7vpmr4.apps.googleusercontent.com"
 
 class LoginFragment: Fragment() {
+
+    private lateinit var userRepository: UserRepository
+
 
     // Interface to lock and unlock navigation drawer
     interface LoginInterface {
@@ -59,6 +67,7 @@ class LoginFragment: Fragment() {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+        userRepository = UserRepository.getInstance(requireContext())!!
     }
 
     override fun onCreateView(
@@ -156,12 +165,38 @@ class LoginFragment: Fragment() {
             Log.d(logTag, "Signed in successfully, show authenticated UI")
 
             MainActivity.signedIn = true
-            val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
-            findNavController().navigate(action)
 
             if (account != null) {
                 MainActivity.email = account.email.toString()
                 MainActivity.name = account.displayName.toString()
+
+                var user: LiveData<User?> = userRepository.getUser(account.email.toString())
+
+                user.observe(
+                    viewLifecycleOwner,
+                    Observer { result ->
+                        result.let {
+
+                            if(result == null){
+                                Log.d(logTag, "New user added to the database")
+                                MainActivity.totalMoney = 1000.0
+                                var newUser = User(UUID.randomUUID(), account.email.toString(), 1000.0)
+                                userRepository.addUser(newUser)
+                                val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
+                                findNavController().navigate(action)
+                            }
+                            else{
+                                MainActivity.totalMoney = result.totalmoney
+                                Log.d(logTag, "Got totalMoney from database")
+                                val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
+                                findNavController().navigate(action)
+                            }
+
+
+                        }
+                    }
+                )
+
             }
 
             // Signed in successfully, show authenticated UI.
