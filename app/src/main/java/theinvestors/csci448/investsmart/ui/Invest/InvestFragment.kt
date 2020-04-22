@@ -2,8 +2,6 @@ package theinvestors.csci448.investsmart.ui.Invest
 
 import android.content.Context
 import android.graphics.drawable.ClipDrawable.HORIZONTAL
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -33,6 +30,7 @@ class InvestFragment: Fragment() {
     private lateinit var adapter: InvestAdapter
     private lateinit var companies: MutableList<Company>
     private lateinit var factory: InvestViewModelFactory
+    private lateinit var mContext: Context
 
     private val investViewModel: InvestViewModel by lazy {
         ViewModelProvider(this@InvestFragment, factory)
@@ -49,6 +47,10 @@ class InvestFragment: Fragment() {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
         factory = InvestViewModelFactory(requireContext())
+
+        // Context to pass recycler view
+        mContext = requireActivity()
+
 
         companies = ArrayList()
 
@@ -93,7 +95,6 @@ class InvestFragment: Fragment() {
                 }
             }
         )
-
         updateUI(companies)
     }
 
@@ -138,7 +139,7 @@ class InvestFragment: Fragment() {
     }
 
     fun updateUI(companies: List<Company>){
-        adapter = InvestAdapter(companies)
+        adapter = InvestAdapter(companies, mContext)
         recyclerView.adapter = adapter
     }
 
@@ -155,7 +156,7 @@ class InvestFragment: Fragment() {
         var investBtn: Button = itemView.findViewById(R.id.list_item_invest_button)
 
 
-        fun bind(company: Company){
+        fun bind(company: Company, context: Context){
             this.company = company
             companyNameTextView.text = company.companyName
             companyValue.text = company.companyValue.current
@@ -169,11 +170,33 @@ class InvestFragment: Fragment() {
                 Log.d(logTag, "${companyNameTextView.text}.")
 
                 var asset: Asset = Asset(UUID.randomUUID(), MainActivity.email, companyNameTextView.text.toString(), 5)
-                //factory = InvestViewModelFactory(requireContext())
-                //investViewModel.addAsset(asset)
+                Log.d(logTag, context.toString())
+                factory = InvestViewModelFactory(context)
+                investViewModel.addAsset(asset)
 
                 //view.findNavController().navigate(R.id.buyFragment)
             }
         }
     }
+
+    inner class InvestAdapter(private val companies: List<Company>, context: Context): RecyclerView.Adapter<InvestHolder>() {
+
+        var mContext = context
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvestHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_item_invest, parent, false)
+            return InvestHolder(view)
+        }
+
+        override fun getItemCount(): Int {
+            return companies.size
+        }
+
+        override fun onBindViewHolder(holder: InvestHolder, position: Int) {
+            val company = companies[position]
+            holder.bind(company, mContext)
+        }
+    }
+
 }
