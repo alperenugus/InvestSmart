@@ -160,13 +160,12 @@ class InvestFragment: Fragment() {
             this.company = company
             companyNameTextView.text = company.companyName
             companyValue.text = company.companyValue.current
-            companyO.text = company.companyValue.open
-            companyH.text = company.companyValue.high
-            companyL.text = company.companyValue.low
+            companyO.text = String.format("%.1f", company.companyValue.open.toFloat())
+            companyH.text = String.format("%.1f", company.companyValue.high.toFloat())
+            companyL.text = String.format("%.1f", company.companyValue.low.toFloat())
             companyPc.text = String.format("%.1f", company.companyValue.pc.toFloat())
 
-
-
+            
             investBtn.setOnClickListener {
                 Log.d(logTag, "Invest Clicked.")
                 Log.d(logTag, "${companyNameTextView.text}.")
