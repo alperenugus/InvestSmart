@@ -32,6 +32,8 @@
     <string name="total_money">Total Money: </string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets"><u>Current Assets:</u></string>
+    <string name="current_assets_empty">You have no assets</string>
+    <string name="invest_now">Buy shares now!</string>
     <string name="invest_sell">Invest/Sell</string>
     <string name="assets_bottom_text">Use your money in a smart way!</string>
 
