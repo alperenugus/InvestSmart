@@ -6,6 +6,10 @@ import androidx.room.*
 @Dao
 interface AssetDao {
 
+    @Query("SELECT * FROM asset WHERE email = (:email) AND company = (:company)")
+    fun getAsset(email: String, company: String): LiveData<Asset>
+
+
     @Query("SELECT * FROM asset WHERE email = (:email)")
     fun getAssets(email: String): LiveData<List<Asset>>
 

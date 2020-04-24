@@ -29,7 +29,7 @@
     <string name="policy">Terms of Service and Privacy Policy</string>
 
     <!--assets_screen-->
-    <string name="total_money">Total Money: </string>
+    <string name="total_money">Total Money: $</string>
     <string name="assets_middle_text">You can invest in companies or sell your shares.</string>
     <string name="current_assets"><u>Current Assets:</u></string>
     <string name="current_assets_empty">You have no assets</string>
@@ -97,7 +97,7 @@
     <string name="home_second">Home Second</string>
 
     <string name="hello">Hello</string>
-    <string name="invest_text">You can invest your money to companies here!</string>
+    <string name="invest_text">You can invest your money here!</string>
     <string name="abbreviations">O : Opening H : High, L : Low, PC : Previous Closing</string>
     <string name="symbol">Symbol: </string>
     <string name="current_price">Current Price: $</string>
@@ -112,4 +112,10 @@
     <string name="plus">+</string>
     <string name="minus">-</string>
     <string name="question_mark">\?</string>
+
+    <string name="not_enough_money">You do not have enough money to buy shares of this company!</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="invest_confirmation">Are you sure to buy this share?</string>
+    <string name="invest_success">The share successfully added to your assets.</string>
+    <string name="shares">Shares:</string>
 </resources>

@@ -29,6 +29,11 @@ class AssetRepository(private val assetDao: AssetDao) {
         }
     }
 
+    fun getAsset(email: String, company: String): LiveData<Asset>{
+        return assetDao.getAsset(email, company)
+    }
+
+
     fun getAssets(email: String): LiveData<List<Asset>> {
             return assetDao.getAssets(email)
     }

@@ -12,12 +12,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.Asset
+import theinvestors.csci448.investsmart.data.asset.AssetRepository
 import java.util.*
 
 private const val logTag: String = "CurrentAssetsFragment"
@@ -30,6 +33,9 @@ class CurrentAssetsFragment: Fragment() {
     private lateinit var nameTextView: TextView
     private lateinit var emailTextView: TextView
     private lateinit var totalMoneyTextView: TextView
+    private lateinit var assetRepository: AssetRepository
+    private lateinit var mContext: Context
+
 
     private val currentAssetsViewModel: CurrentAssetsViewModel by lazy {
         ViewModelProvider(this@CurrentAssetsFragment, factory)
@@ -37,9 +43,7 @@ class CurrentAssetsFragment: Fragment() {
     }
 
     fun updateUI(assets : List<Asset>){
-        adapter = AssetAdapter(assets){
-                asset: Asset -> Unit
-        }
+        adapter = AssetAdapter(assets, mContext)
         assetsRecyclerView.adapter = adapter
     }
 
@@ -52,6 +56,9 @@ class CurrentAssetsFragment: Fragment() {
         Log.d(logTag, "onCreate() called")
         super.onCreate(savedInstanceState)
         factory = CurrentAssetsViewModelFactory(requireContext())
+        assetRepository = AssetRepository.getInstance(requireContext())!!
+        // Context to pass recycler view
+        mContext = requireActivity()
     }
 
     override fun onCreateView(
@@ -76,7 +83,7 @@ class CurrentAssetsFragment: Fragment() {
         emailTextView.text = MainActivity.email
 
         totalMoneyTextView = view.findViewById(R.id.total_money_text_view)
-        totalMoneyTextView.text = MainActivity.totalMoney.toString()
+        totalMoneyTextView.text = String.format("%.1f", MainActivity.totalMoney)
 
         updateUI(emptyList())
 
@@ -154,4 +161,37 @@ class CurrentAssetsFragment: Fragment() {
         Log.d(logTag, "onDetach() called")
         super.onDetach()
     }
+
+    inner class AssetHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        lateinit var asset: Asset
+        var companyNameTextView: TextView = itemView.findViewById(R.id.list_item_asset_company_name_text)
+        var ownedShareTextView: TextView = itemView.findViewById(R.id.list_item_asset_owned_share_text)
+
+        fun bind(asset: Asset, mContext: Context){
+            this.asset = asset
+            companyNameTextView.text = asset.company
+            ownedShareTextView.text = asset.owned_shares.toString()
+        }
+    }
+
+    inner class AssetAdapter(private val assets: List<Asset>, mContext: Context): RecyclerView.Adapter<AssetHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssetHolder {
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_item_asset, parent, false)
+            return AssetHolder(view)
+        }
+
+        override fun getItemCount(): Int {
+            return assets.size
+        }
+
+        override fun onBindViewHolder(holder: AssetHolder, position: Int) {
+            val asset = assets[position]
+            holder.bind(asset, mContext)
+        }
+
+    }
+
+
 }

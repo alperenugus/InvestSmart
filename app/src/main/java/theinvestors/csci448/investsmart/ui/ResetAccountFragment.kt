@@ -97,6 +97,8 @@ class ResetAccountFragment: Fragment() {
                         var user: User = User(UUID.randomUUID(), MainActivity.email, 1000.0)
                         userRepository.addUser(user)
 
+                        MainActivity.totalMoney = 1000.0
+
                         // Hide keyboard
                         val imm: InputMethodManager =
                             activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

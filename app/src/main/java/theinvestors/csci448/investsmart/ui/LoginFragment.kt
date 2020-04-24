@@ -23,6 +23,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
+import theinvestors.csci448.investsmart.data.asset.AssetRepository
 import theinvestors.csci448.investsmart.data.user.User
 import theinvestors.csci448.investsmart.data.user.UserRepository
 import theinvestors.csci448.investsmart.util.NetworkUtil
@@ -36,6 +37,7 @@ private const val CLIENT_ID: String = "365224585407-9b1eg074rcr6g70p342ggr7j3q7v
 class LoginFragment: Fragment() {
 
     private lateinit var userRepository: UserRepository
+    private lateinit var assetRepository: AssetRepository
 
 
     // Interface to lock and unlock navigation drawer
@@ -68,6 +70,7 @@ class LoginFragment: Fragment() {
         super.onCreate(savedInstanceState)
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
         userRepository = UserRepository.getInstance(requireContext())!!
+        assetRepository = AssetRepository.getInstance(requireContext())!!
     }
 
     override fun onCreateView(

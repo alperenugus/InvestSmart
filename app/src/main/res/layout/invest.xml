@@ -16,6 +16,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/invest_total_money"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/total_money"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/abbreviations"
         android:textColor="@color/colorText"
         android:gravity="center"

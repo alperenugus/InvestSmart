@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
     private var networkUtil: NetworkUtil = NetworkUtil()
 
     companion object{
+        var signedIn: Boolean = false;
         var name: String = "investsmart"
         var email: String = "investsmartmines@gmail.com"
         var totalMoney: Double = 1000.0
-        var signedIn: Boolean = false;
         lateinit var companyNames: MutableList<String>
         lateinit var companyValues: MutableMap<String, CompanyValue>
 
