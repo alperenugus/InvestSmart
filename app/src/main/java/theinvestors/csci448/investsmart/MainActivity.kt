@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         companyNames.add("MSFT")
         companyNames.add("PYPL")
 
+        stockService.getHistoricValue("AAPL")
+
         if(networkUtil.isNetworkAvailableAndConnected(this)){
             for (i in 0 until companyNames.size){
                 getValues(companyNames[i])

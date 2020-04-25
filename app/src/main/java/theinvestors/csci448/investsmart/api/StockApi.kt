@@ -10,4 +10,13 @@ interface StockApi {
         @Query("symbol") symbol: String,
         @Query("token") token: String
     ): Call<CompanyValue>
+
+    @GET("stock/candle?")
+    fun getCompanyHistoricValue(
+        @Query("symbol") symbol: String,
+        @Query("resolution") resolution: String,
+        @Query("from") from: String,
+        @Query("to") to: String,
+        @Query("token") token: String
+    ): Call<CompanyHistoricValue>
 }
