@@ -1,12 +1,15 @@
 package theinvestors.csci448.investsmart.ui.CurrentAssets
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.graphics.drawable.ClipDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
@@ -21,6 +24,8 @@ import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.Asset
 import theinvestors.csci448.investsmart.data.asset.AssetRepository
+import theinvestors.csci448.investsmart.data.user.User
+import theinvestors.csci448.investsmart.data.user.UserRepository
 import java.util.*
 
 private const val logTag: String = "CurrentAssetsFragment"
@@ -34,6 +39,7 @@ class CurrentAssetsFragment: Fragment() {
     private lateinit var emailTextView: TextView
     private lateinit var totalMoneyTextView: TextView
     private lateinit var assetRepository: AssetRepository
+    private lateinit var userRepository: UserRepository
     private lateinit var mContext: Context
 
 
@@ -57,6 +63,7 @@ class CurrentAssetsFragment: Fragment() {
         super.onCreate(savedInstanceState)
         factory = CurrentAssetsViewModelFactory(requireContext())
         assetRepository = AssetRepository.getInstance(requireContext())!!
+        userRepository = UserRepository.getInstance(requireContext())!!
         // Context to pass recycler view
         mContext = requireActivity()
     }
@@ -166,11 +173,96 @@ class CurrentAssetsFragment: Fragment() {
         lateinit var asset: Asset
         var companyNameTextView: TextView = itemView.findViewById(R.id.list_item_asset_company_name_text)
         var ownedShareTextView: TextView = itemView.findViewById(R.id.list_item_asset_owned_share_text)
+        var sellBtn: Button = itemView.findViewById(R.id.asset_sell_button)
+        var predictBtn: Button = itemView.findViewById(R.id.asset_predict_button)
 
         fun bind(asset: Asset, mContext: Context){
             this.asset = asset
             companyNameTextView.text = asset.company
             ownedShareTextView.text = asset.owned_shares.toString()
+
+
+            sellBtn.setOnClickListener {
+                Log.d(logTag, "Sell Button Clicked.")
+
+                val dialogBuilder = AlertDialog.Builder(requireContext())
+
+                dialogBuilder.setMessage(R.string.sell_confirmation)
+                    // if the dialog is cancelable
+                    .setCancelable(false)
+                    // positive button text and action
+                    .setPositiveButton(R.string.proceed, DialogInterface.OnClickListener {
+                            dialog, id ->
+
+                        var user : LiveData<User?> = userRepository.getUser(MainActivity.email)
+                        var oldAsset: LiveData<Asset> = assetRepository.getAsset(MainActivity.email, asset.company)
+
+
+                        user.observe(
+                            viewLifecycleOwner,
+                            Observer { userResult -> userResult.let {
+
+                                if(userResult != null){
+
+                                    oldAsset.observe(
+                                        viewLifecycleOwner,
+                                        Observer { assetResult -> assetResult.let {
+
+                                            if(assetResult != null){
+                                                if(assetResult.owned_shares == 1){
+                                                    Log.d(logTag, "User only has 1 stock of this company")
+                                                    // Delete the asset
+                                                    assetRepository.deleteAsset(assetResult)
+                                                    // Update user money and text view
+                                                    userResult.totalmoney += MainActivity.companyValues[asset.company]!!.current.toFloat()
+                                                    MainActivity.totalMoney = userResult.totalmoney
+                                                    userRepository.addUser(userResult)
+                                                    totalMoneyTextView.text = String.format("%.1f", userResult.totalmoney)
+                                                }
+                                                else{
+                                                    Log.d(logTag, "User has many stocks of this company")
+
+                                                    assetResult.owned_shares -= 1
+                                                    assetRepository.addAsset(assetResult)
+
+                                                    // Update user money and text view
+                                                    userResult.totalmoney += MainActivity.companyValues[asset.company]!!.current.toFloat()
+                                                    MainActivity.totalMoney = userResult.totalmoney
+                                                    userRepository.addUser(userResult)
+                                                    totalMoneyTextView.text = String.format("%.1f", userResult.totalmoney)
+
+                                                }
+                                            }
+
+                                            // Remove observers to prevent infinite loops since the observed items changes with this code
+                                            oldAsset.removeObservers(viewLifecycleOwner)
+                                            user.removeObservers(viewLifecycleOwner)
+
+                                        } }
+                                    )
+                                }
+                            } }
+                        )
+
+                    })
+                    // negative button text and action
+                    .setNegativeButton(R.string.cancel, DialogInterface.OnClickListener {
+                            dialog, id -> dialog.cancel()
+                    })
+
+                // create dialog box
+                val alert = dialogBuilder.create()
+                // set title for alert dialog box
+                alert.setTitle(R.string.confirmation)
+                // show alert dialog
+                alert.show()
+            }
+
+            predictBtn.setOnClickListener {
+
+            }
+
+
         }
     }
 

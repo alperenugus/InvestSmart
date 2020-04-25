@@ -45,6 +45,13 @@ class AssetRepository(private val assetDao: AssetDao) {
         }
     }
 
+    fun deleteAsset(asset: Asset){
+        executor.execute{
+            assetDao.deleteAsset(asset)
+            Log.d(logTag, "Asset deleted")
+        }
+    }
+
     fun deleteAll(){
         executor.execute{
             assetDao.deleteAll()

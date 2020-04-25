@@ -16,6 +16,9 @@ interface AssetDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addAsset(asset: Asset)
 
+    @Delete
+    fun deleteAsset(asset: Asset)
+
     @Query("DELETE FROM asset")
     fun deleteAll()
 }

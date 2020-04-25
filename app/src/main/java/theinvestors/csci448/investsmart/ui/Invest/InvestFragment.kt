@@ -170,6 +170,7 @@ class InvestFragment: Fragment() {
         var companyL: TextView = itemView.findViewById(R.id.invest_company_l)
         var companyPc: TextView = itemView.findViewById(R.id.invest_company_pc)
         var investBtn: Button = itemView.findViewById(R.id.list_item_invest_button)
+        var predictBtn: Button = itemView.findViewById(R.id.list_item_predict_button)
 
 
         fun bind(company: Company, mContext: Context){
@@ -225,10 +226,6 @@ class InvestFragment: Fragment() {
                                                     userRepository.addUser(userResult)
                                                     MainActivity.totalMoney = userResult.totalmoney
                                                     totalMoneyTextView.text = getString(R.string.total_money) + String.format("%.1f", userResult.totalmoney)
-
-                                                    // Remove observers to prevent infinite loops since the observed items changes with this code
-                                                    oldAsset.removeObservers(viewLifecycleOwner)
-                                                    user.removeObservers(viewLifecycleOwner)
                                                 }
                                                 //
                                                 else{
@@ -242,10 +239,11 @@ class InvestFragment: Fragment() {
                                                     MainActivity.totalMoney = userResult.totalmoney
                                                     totalMoneyTextView.text = getString(R.string.total_money) + String.format("%.1f", userResult.totalmoney)
 
-                                                    // Remove observers to prevent infinite loops since the observed items changes with this code
-                                                    oldAsset.removeObservers(viewLifecycleOwner)
-                                                    user.removeObservers(viewLifecycleOwner)
                                                 }
+
+                                                // Remove observers to prevent infinite loops since the observed items changes with this code
+                                                oldAsset.removeObservers(viewLifecycleOwner)
+                                                user.removeObservers(viewLifecycleOwner)
 
                                             }
                                             }
@@ -274,6 +272,12 @@ class InvestFragment: Fragment() {
                     alert.show()
                 }
             }
+
+
+            predictBtn.setOnClickListener {
+
+            }
+
         }
     }
 
