@@ -16,6 +16,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
+import theinvestors.csci448.investsmart.api.CompanyHistoricValue
 import theinvestors.csci448.investsmart.api.CompanyValue
 import theinvestors.csci448.investsmart.api.StockService
 import theinvestors.csci448.investsmart.ui.LoginFragment
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         var totalMoney: Double = 1000.0
         lateinit var companyNames: MutableList<String>
         lateinit var companyValues: MutableMap<String, CompanyValue>
+        lateinit var companyHistoricValues: MutableMap<String, CompanyHistoricValue>
 
     }
 
@@ -51,8 +53,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.currentAssetsFragment,
-            R.id.investFragment, R.id.predictionFragment,
+            R.id.currentAssetsFragment, R.id.investFragment,
             R.id.resetAccountFragment, R.id.aboutUsFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -60,17 +61,18 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         stockService = StockService()
         companyNames = ArrayList()
         companyValues = HashMap()
+        companyHistoricValues = HashMap()
+
         companyNames.add("AAPL")
         companyNames.add("AMZN")
         companyNames.add("IBM")
         companyNames.add("MSFT")
         companyNames.add("PYPL")
 
-        stockService.getHistoricValue("AAPL")
-
         if(networkUtil.isNetworkAvailableAndConnected(this)){
             for (i in 0 until companyNames.size){
                 getValues(companyNames[i])
+                getHistoricValue(companyNames[i])
             }
         }
         else{
@@ -124,4 +126,18 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
             }
         )
     }
+
+    fun getHistoricValue(companyName: String){
+        var historicValue = stockService.getHistoricValue(companyName)
+
+        historicValue.observe(
+            this,
+            Observer { result -> result.let {
+                companyHistoricValues.put(companyName, result)
+                //Log.d(logTag, companyName + result.current.toString() + result.timestamp.toString())
+            } }
+        )
+
+    }
+
 }

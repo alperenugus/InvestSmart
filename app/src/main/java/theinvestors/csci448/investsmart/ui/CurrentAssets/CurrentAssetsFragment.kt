@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.nield.kotlinstatistics.simpleRegression
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.Asset
@@ -260,6 +261,24 @@ class CurrentAssetsFragment: Fragment() {
 
             predictBtn.setOnClickListener {
 
+                var historicValue = MainActivity.companyHistoricValues[asset.company]
+
+                if(historicValue != null){
+                    val r = sequenceOf(
+                        historicValue.timestamp[0].toFloat() to historicValue.current[0].toFloat(),
+                        historicValue.timestamp[1].toFloat() to historicValue.current[1].toFloat(),
+                        historicValue.timestamp[2].toFloat() to historicValue.current[2].toFloat(),
+                        historicValue.timestamp[3].toFloat() to historicValue.current[3].toFloat(),
+                        historicValue.timestamp[4].toFloat() to historicValue.current[4].toFloat()
+                        ).simpleRegression()
+
+                    var prediction = r.predict((getDaysLater(7).time / 1000).toDouble())
+                    Log.d(logTag, "Prediction for ${asset.company}: ${String.format("%.1f", prediction)}")
+
+                    
+
+                }
+
             }
 
 
@@ -283,6 +302,13 @@ class CurrentAssetsFragment: Fragment() {
             holder.bind(asset, mContext)
         }
 
+    }
+
+    fun getDaysLater(daysLater: Int): Date {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, daysLater)
+
+        return calendar.time
     }
 
 

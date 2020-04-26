@@ -63,18 +63,6 @@ class StockService{
         Log.d(logTag, dateNow.toString())
         Log.d(logTag, datePast.toString())
 
-        // Regression Example
-
-//        val r = sequenceOf(
-//            1.0 to 3.0,
-//            2.0 to 6.0,
-//            3.0 to 9.0
-//        ).simpleRegression()
-//
-//        Log.d(logTag, r.predict(4.0).toString())
-
-
-
         val request : Call<CompanyHistoricValue> = stockApi.getCompanyHistoricValue(symbol, "D", datePast.toString(), dateNow.toString(), TOKEN)
 
         request.enqueue(object : Callback<CompanyHistoricValue>{

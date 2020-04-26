@@ -27,10 +27,6 @@
             app:destination="@id/currentAssetsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/predictionFragment"
-        android:name="theinvestors.csci448.investsmart.ui.PredictionFragment"
-        android:label="Prediction" />
-    <fragment
         android:id="@+id/settingsFragment"
         android:name="theinvestors.csci448.investsmart.ui.SettingsFragment"
         android:label="Settings" >

@@ -3,6 +3,7 @@ package theinvestors.csci448.investsmart.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -186,13 +187,19 @@ class LoginFragment: Fragment() {
                                 var newUser = User(UUID.randomUUID(), account.email.toString(), 1000.0)
                                 userRepository.addUser(newUser)
                                 val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
-                                findNavController().navigate(action)
+                                // Added delay to get all the data in the MainActivity ready
+                                Handler().postDelayed({
+                                    findNavController().navigate(action)
+                                }, 2000)
                             }
                             else{
                                 MainActivity.totalMoney = result.totalmoney
                                 Log.d(logTag, "Got totalMoney from database")
                                 val action = LoginFragmentDirections.actionLoginFragmentToCurrentAssetsFragment()
-                                findNavController().navigate(action)
+                                // Added delay to get all the data in the MainActivity ready
+                                Handler().postDelayed({
+                                    findNavController().navigate(action)
+                                }, 2000)
                             }
 
 

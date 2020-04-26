@@ -11,9 +11,6 @@
             android:id="@+id/investFragment"
             android:title="@string/menu_invest" />
         <item
-            android:id="@+id/predictionFragment"
-            android:title="@string/menu_prediction" />
-        <item
             android:id="@+id/resetAccountFragment"
             android:title="@string/menu_reset_account" />
         <item
