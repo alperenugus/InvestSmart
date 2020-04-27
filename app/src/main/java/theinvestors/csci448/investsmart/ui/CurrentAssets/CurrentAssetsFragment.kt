@@ -15,8 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.paging.PagedListAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -275,8 +273,17 @@ class CurrentAssetsFragment: Fragment() {
                     var prediction = r.predict((getDaysLater(7).time / 1000).toDouble())
                     Log.d(logTag, "Prediction for ${asset.company}: ${String.format("%.1f", prediction)}")
 
-                    
-
+                    val builder =
+                        AlertDialog.Builder(requireContext())
+                    builder.setMessage(getString(R.string.prediction) + String.format("%.1f", prediction))
+                        .setCancelable(false)
+                        .setPositiveButton(
+                            R.string.ok
+                        ) { dialog, id ->
+                            dialog.cancel()
+                        }
+                    val alert = builder.create()
+                    alert.show()
                 }
 
             }

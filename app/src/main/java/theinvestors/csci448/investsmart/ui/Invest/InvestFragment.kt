@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.nield.kotlinstatistics.simpleRegression
 import theinvestors.csci448.investsmart.MainActivity
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.api.CompanyValue
@@ -275,7 +276,32 @@ class InvestFragment: Fragment() {
 
 
             predictBtn.setOnClickListener {
+                var historicValue = MainActivity.companyHistoricValues[company.companyName]
 
+                if(historicValue != null){
+                    val r = sequenceOf(
+                        historicValue.timestamp[0].toFloat() to historicValue.current[0].toFloat(),
+                        historicValue.timestamp[1].toFloat() to historicValue.current[1].toFloat(),
+                        historicValue.timestamp[2].toFloat() to historicValue.current[2].toFloat(),
+                        historicValue.timestamp[3].toFloat() to historicValue.current[3].toFloat(),
+                        historicValue.timestamp[4].toFloat() to historicValue.current[4].toFloat()
+                    ).simpleRegression()
+
+                    var prediction = r.predict((getDaysLater(7).time / 1000).toDouble())
+                    Log.d(logTag, "Prediction for ${company.companyName}: ${String.format("%.1f", prediction)}")
+
+                    val builder =
+                        AlertDialog.Builder(requireContext())
+                    builder.setMessage(getString(R.string.prediction) + String.format("%.1f", prediction))
+                        .setCancelable(false)
+                        .setPositiveButton(
+                            R.string.ok
+                        ) { dialog, id ->
+                            dialog.cancel()
+                        }
+                    val alert = builder.create()
+                    alert.show()
+                }
             }
 
         }
@@ -297,6 +323,13 @@ class InvestFragment: Fragment() {
             val company = companies[position]
             holder.bind(company, mContext)
         }
+    }
+
+    fun getDaysLater(daysLater: Int): Date {
+        val calendar = Calendar.getInstance()
+        calendar.add(Calendar.DAY_OF_YEAR, daysLater)
+
+        return calendar.time
     }
 
 }

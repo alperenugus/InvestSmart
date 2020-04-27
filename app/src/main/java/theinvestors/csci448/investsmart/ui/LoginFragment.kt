@@ -190,7 +190,7 @@ class LoginFragment: Fragment() {
                                 // Added delay to get all the data in the MainActivity ready
                                 Handler().postDelayed({
                                     findNavController().navigate(action)
-                                }, 2000)
+                                }, 1000)
                             }
                             else{
                                 MainActivity.totalMoney = result.totalmoney
@@ -199,10 +199,9 @@ class LoginFragment: Fragment() {
                                 // Added delay to get all the data in the MainActivity ready
                                 Handler().postDelayed({
                                     findNavController().navigate(action)
-                                }, 2000)
+                                }, 1000)
                             }
-
-
+                            user.removeObservers(viewLifecycleOwner)
                         }
                     }
                 )
