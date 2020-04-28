@@ -5,7 +5,11 @@
     <fragment
         android:id="@+id/currentAssetsFragment"
         android:name="theinvestors.csci448.investsmart.ui.CurrentAssets.CurrentAssetsFragment"
-        android:label="Home" />
+        android:label="Home" >
+        <action
+            android:id="@+id/action_currentAssetsFragment_to_investFragment"
+            app:destination="@id/investFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="theinvestors.csci448.investsmart.ui.AboutUsFragment"
@@ -27,17 +31,6 @@
             app:destination="@id/currentAssetsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="theinvestors.csci448.investsmart.ui.SettingsFragment"
-        android:label="Settings" >
-        <action
-            android:id="@+id/action_settingsFragment_to_resetAccountFragment"
-            app:destination="@id/resetAccountFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_aboutUsFragment"
-            app:destination="@id/aboutUsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/resetAccountFragment"
         android:name="theinvestors.csci448.investsmart.ui.ResetAccountFragment"
         android:label="ResetAccount" >
@@ -45,6 +38,10 @@
             android:id="@+id/action_resetAccountFragment_to_currentAssetsFragment"
             app:destination="@id/currentAssetsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="theinvestors.csci448.investsmart.ui.ContactFragment"
+        android:label="Contact Us" />
 
 
 </navigation>

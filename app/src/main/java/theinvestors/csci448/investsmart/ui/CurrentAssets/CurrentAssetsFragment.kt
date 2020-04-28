@@ -10,11 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +39,10 @@ class CurrentAssetsFragment: Fragment() {
     private lateinit var nameTextView: TextView
     private lateinit var emailTextView: TextView
     private lateinit var totalMoneyTextView: TextView
+    private lateinit var noAssetTextView: TextView
+    private lateinit var assetValueTextView: TextView
+    private lateinit var noAssetImageView: ImageView
+    private lateinit var buyShareBtn: Button
     private lateinit var assetRepository: AssetRepository
     private lateinit var userRepository: UserRepository
     private lateinit var mContext: Context
@@ -91,6 +97,18 @@ class CurrentAssetsFragment: Fragment() {
         totalMoneyTextView = view.findViewById(R.id.total_money_text_view)
         totalMoneyTextView.text = String.format("%.1f", MainActivity.totalMoney)
 
+        noAssetTextView = view.findViewById(R.id.current_assets_no_asset)
+        buyShareBtn = view.findViewById(R.id.current_assets_buy_assets_btn)
+
+        assetValueTextView = view.findViewById(R.id.asset_value_text_view)
+
+        noAssetImageView = view.findViewById(R.id.no_asset_image_view)
+
+        buyShareBtn.setOnClickListener {
+            val action = CurrentAssetsFragmentDirections.actionCurrentAssetsFragmentToInvestFragment()
+            findNavController().navigate(action)
+        }
+
         updateUI(emptyList())
 
         return view
@@ -106,26 +124,28 @@ class CurrentAssetsFragment: Fragment() {
             Observer { assetList ->
                 assetList?.let {
                     Log.d(logTag, "Got assetList ${assetList.toString()}")
+                    if(assetList.isNotEmpty()){
+                        noAssetTextView.visibility = View.GONE
+                        buyShareBtn.visibility = View.GONE
+                        noAssetImageView.visibility = View.GONE
+
+                        var assetValue : Double = 0.0
+
+                        assetList.forEach {
+                            assetValue += MainActivity.companyValues[it.company]!!.current.toDouble()
+                        }
+                        assetValueTextView.text = getString(R.string.asset_value) + String.format("%.1f", assetValue)
+                    }
+                    else{
+                        noAssetTextView.visibility = View.VISIBLE
+                        buyShareBtn.visibility = View.VISIBLE
+                        noAssetImageView.visibility = View.VISIBLE
+                        assetValueTextView.text = getString(R.string.asset_value) + String.format("%.1f", 0.0)
+                    }
                     updateUI(assetList)
                 }
             }
         )
-
-        // Sample data
-//        var asset1: Asset = Asset(UUID.randomUUID(), MainActivity.email, "SpaceX", 100)
-//        var asset2: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Apple", 200)
-//        var asset3: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Microsoft", 300)
-//        var asset4: Asset = Asset(UUID.randomUUID(), MainActivity.email, "IBM", 50)
-//        var asset5: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Samsung", 75)
-//        var asset6: Asset = Asset(UUID.randomUUID(), MainActivity.email, "Siemens", 140)
-//
-//        currentAssetsViewModel.addAsset(asset1)
-//        currentAssetsViewModel.addAsset(asset2)
-//        currentAssetsViewModel.addAsset(asset3)
-//        currentAssetsViewModel.addAsset(asset4)
-//        currentAssetsViewModel.addAsset(asset5)
-//        currentAssetsViewModel.addAsset(asset6)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

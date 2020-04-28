@@ -121,4 +121,9 @@
     <string name="sell_confirmation">Are you sure to sell this share?</string>
     <string name="prediction">The predicted value for the next week is: $</string>
     <string name="ok">OK</string>
+    <string name="asset_value">Asset Value: $</string>
+    <string name="contact">Contact Us</string>
+    <string name="feedback">Your feedback is important to us!</string>
+    <string name="feel_free">Please feel free to share your ideas and\nhelp us improve this app.</string>
+    <string name="input_problem">You should complete the form before submitting.</string>
 </resources>

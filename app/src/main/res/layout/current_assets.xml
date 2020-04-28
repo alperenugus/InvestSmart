@@ -88,9 +88,16 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/asset_value_text_view"
+            android:text="@string/asset_value"
+            android:textColor="@color/colorText"
+            android:padding="5dp">
+        </TextView>
+
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,6 +114,37 @@
             android:textSize="18sp"></TextView>
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/current_assets_no_asset"
+        android:gravity="center"
+        android:text="Ops! It seems you do not have any assets."
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        >
+    </TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/current_assets_buy_assets_btn"
+        android:text="Buy Assets"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button"
+        android:padding="10dp"
+        >
+    </Button>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/no_asset_image_view"
+        android:src="@drawable/noasset"
+        android:padding="10dp">
+    </ImageView>
 
     <androidx.recyclerview.widget.RecyclerView
         xmlns:android = "http://schemas.android.com/apk/res/android"

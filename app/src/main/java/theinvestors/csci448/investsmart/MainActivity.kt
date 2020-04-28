@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
     private var networkUtil: NetworkUtil = NetworkUtil()
 
     companion object{
+        var InvestSmartEmail = "investsmartmines@gmail.com"
         var signedIn: Boolean = false;
         var name: String = "investsmart"
         var email: String = "investsmartmines@gmail.com"
@@ -89,10 +90,10 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
-            R.id.action_settings -> {
+            R.id.action_contact -> {
 
                 if(signedIn)
-                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.settingsFragment)
+                Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.contactFragment)
                 else Toast.makeText(applicationContext, "You should sign in!", Toast.LENGTH_SHORT).show()
                 true
             }

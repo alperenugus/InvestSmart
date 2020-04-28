@@ -9,9 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -72,6 +72,7 @@ class LoginFragment: Fragment() {
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
         userRepository = UserRepository.getInstance(requireContext())!!
         assetRepository = AssetRepository.getInstance(requireContext())!!
+
     }
 
     override fun onCreateView(
@@ -93,7 +94,6 @@ class LoginFragment: Fragment() {
 
         // Lock the drawer
         loginInterface.LoginLockDrawer()
-
         return view
     }
 
@@ -115,6 +115,8 @@ class LoginFragment: Fragment() {
     override fun onResume() {
         Log.d(logTag, "onResume() called")
         super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(false)
+
     }
 
     override fun onPause() {
@@ -125,6 +127,7 @@ class LoginFragment: Fragment() {
     override fun onStop() {
         Log.d(logTag, "onStop() called")
         super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onDestroyView() {
