@@ -41,8 +41,6 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         lateinit var companyValues: MutableMap<String, CompanyValue>
         lateinit var companyHistoricValues: MutableMap<String, CompanyHistoricValue>
         lateinit var mGoogleSignInClient: GoogleSignInClient
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

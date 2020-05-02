@@ -2,6 +2,7 @@ package theinvestors.csci448.investsmart.ui
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -39,6 +40,7 @@ class LoginFragment: Fragment() {
 
     private lateinit var userRepository: UserRepository
     private lateinit var assetRepository: AssetRepository
+    private lateinit var mediaPlayer: MediaPlayer
 
 
     // Interface to lock and unlock navigation drawer
@@ -71,6 +73,8 @@ class LoginFragment: Fragment() {
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
         userRepository = UserRepository.getInstance(requireContext())!!
         assetRepository = AssetRepository.getInstance(requireContext())!!
+
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.congrats)
 
     }
 
@@ -177,6 +181,8 @@ class LoginFragment: Fragment() {
             Log.d(logTag, "Signed in successfully, show authenticated UI")
 
             MainActivity.signedIn = true
+
+            mediaPlayer.start()
 
             if (account != null) {
                 MainActivity.email = account.email.toString()
