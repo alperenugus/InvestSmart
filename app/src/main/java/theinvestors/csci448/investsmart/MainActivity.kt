@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.material.navigation.NavigationView
 import theinvestors.csci448.investsmart.api.CompanyHistoricValue
 import theinvestors.csci448.investsmart.api.CompanyValue
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
         lateinit var companyNames: MutableList<String>
         lateinit var companyValues: MutableMap<String, CompanyValue>
         lateinit var companyHistoricValues: MutableMap<String, CompanyHistoricValue>
+        lateinit var mGoogleSignInClient: GoogleSignInClient
+
 
     }
 
@@ -97,6 +100,21 @@ class MainActivity : AppCompatActivity(), LoginFragment.LoginInterface{
                 else Toast.makeText(applicationContext, "You should sign in!", Toast.LENGTH_SHORT).show()
                 true
             }
+
+            R.id.action_signout -> {
+
+                if(!signedIn){
+                    Toast.makeText(this, R.string.not_signed_in, Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    mGoogleSignInClient.signOut()
+                    signedIn = false
+                    Navigation.findNavController(this, R.id.nav_host_fragment).navigate(R.id.loginFragment)
+                }
+
+                true
+            }
+
             else -> super.onOptionsItemSelected(item)
         }    }
 

@@ -18,11 +18,11 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import theinvestors.csci448.investsmart.MainActivity
+import theinvestors.csci448.investsmart.MainActivity.Companion.mGoogleSignInClient
 import theinvestors.csci448.investsmart.R
 import theinvestors.csci448.investsmart.data.asset.AssetRepository
 import theinvestors.csci448.investsmart.data.user.User
@@ -58,7 +58,6 @@ class LoginFragment: Fragment() {
             .requestIdToken(CLIENT_ID)
             .build()
 
-    private lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onAttach(context: Context) {
         Log.d(logTag, "onAttach() called")
@@ -91,6 +90,12 @@ class LoginFragment: Fragment() {
             if(networkUtil.isNetworkAvailableAndConnected(requireActivity())) signIn()
             else Toast.makeText(requireContext(), R.string.internet, Toast.LENGTH_SHORT).show()
         }
+
+        // To prevent user to access contact us screen and then using the navigation drawer other screens after pressing back button to come to login fragment
+        if(MainActivity.signedIn){
+            mGoogleSignInClient.signOut()
+        }
+        MainActivity.signedIn = false
 
         // Lock the drawer
         loginInterface.LoginLockDrawer()
